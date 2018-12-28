@@ -26,6 +26,6 @@
     "typescript": "^3.2.2"
   },
   "scripts": {
-    "start": "babel-node --extensions '.ts,.tsx' index.ts --delay 2"
+    "start": "nodemon babel-node --extensions '.ts,.tsx' index.ts --delay 2"
   }
 }
