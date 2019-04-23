@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-export const home = (req: Request, res: Response) => res.send("Home");
+export const home = (req: Request, res: Response) => res.render("home");
 export const search = (req: Request, res: Response) => res.send("Search");
 export const videos = (req: Request, res: Response) => res.send("Videos");
 export const upload = (req: Request, res: Response) => res.send("Upload");

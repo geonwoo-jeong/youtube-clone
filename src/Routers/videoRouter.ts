@@ -6,7 +6,7 @@ import {
   videoDetail,
   editVideo,
   deleteVideo
-} from "../controllers/videoController";
+} from "../Controllers/videoController";
 
 const videoRouter = Router();
 

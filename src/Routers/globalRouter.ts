@@ -1,7 +1,7 @@
 import { Router } from "express";
 import routes from "../routes";
-import { home, search } from "../controllers/videoController";
-import { join, login, logout } from "../controllers/userController";
+import { home, search } from "../Controllers/videoController";
+import { join, login, logout } from "../Controllers/userController";
 
 const globalRouter = Router();
 globalRouter.get(routes.home, home);
