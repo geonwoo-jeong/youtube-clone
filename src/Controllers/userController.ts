@@ -9,8 +9,8 @@ export const logout = (req: Request, res: Response) =>
 export const users = (req: Request, res: Response) =>
   res.render("Users", { pageTitle: "Users" });
 export const userDetail = (req: Request, res: Response) =>
-  res.render("User Detail", { pageTitle: "User Detail" });
+  res.render("UserDetail", { pageTitle: "User Detail" });
 export const editProfile = (req: Request, res: Response) =>
-  res.render("Edit Profile", { pageTitle: "Edit Profile" });
+  res.render("EditProfile", { pageTitle: "Edit Profile" });
 export const changePassword = (req: Request, res: Response) =>
-  res.render("Change Password", { pageTitle: "Change Password" });
+  res.render("ChangePassword", { pageTitle: "Change Password" });
