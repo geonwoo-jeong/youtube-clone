@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
+import { videos as videosDB } from "../fakeDB";
 
 export const home = (req: Request, res: Response) =>
-  res.render("Home", { pageTitle: "Home" });
+  res.render("Home", { pageTitle: "Home", videosDB });
 
 export const search = (req: Request, res: Response) => {
   const {

@@ -1,4 +1,7 @@
 extends Layouts/Main
 
 block content
-    p Hello
+    div.videos
+        each video in videosDB
+            h1= video.title
+            p= video.description
