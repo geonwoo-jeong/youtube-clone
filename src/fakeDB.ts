@@ -4,7 +4,8 @@ export const videos = [
     title: "Video awsome",
     description: "This is something i love",
     views: 4323,
-    videoFile: "https://archive.org/details/BigBuckBunny_124",
+    videoFile:
+      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
     creator: {
       id: 1,
       name: "Jeong",
@@ -16,7 +17,8 @@ export const videos = [
     title: "Video 2",
     description: "This is something i love",
     views: 4323,
-    videoFile: "https://archive.org/details/BigBuckBunny_124",
+    videoFile:
+      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
     creator: {
       id: 1,
       name: "Jeong",
@@ -28,7 +30,8 @@ export const videos = [
     title: "Video 3",
     description: "This is something i love",
     views: 4323,
-    videoFile: "https://archive.org/details/BigBuckBunny_124",
+    videoFile:
+      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
     creator: {
       id: 1,
       name: "Jeong",
