@@ -11,7 +11,8 @@ const userRouter = Router();
 
 userRouter.get(routes.editProfile, editProfile);
 userRouter.get(routes.changePassword, changePassword);
-userRouter.get(routes.userDetail, userDetail);
+// userRouter.get(routes.userDetail(), userDetail);
+userRouter.get("/users/:id", userDetail);
 userRouter.get(routes.users, users);
 
 export default userRouter;

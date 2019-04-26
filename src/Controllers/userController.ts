@@ -20,8 +20,12 @@ export const postJoin = (req: Request, res: Response) => {
   // TODO: Log User In
 };
 
-export const login = (req: Request, res: Response) =>
+export const getLogin = (req: Request, res: Response) =>
   res.render("Login", { pageTitle: "Login" });
+
+export const postLogin = (req: Request, res: Response) => {
+  res.redirect(routes.home);
+};
 
 export const logout = (req: Request, res: Response) =>
   res.render("Logout", { pageTitle: "Logout" });
@@ -29,9 +33,12 @@ export const logout = (req: Request, res: Response) =>
 export const users = (req: Request, res: Response) =>
   res.render("Users", { pageTitle: "Users" });
 
-export const userDetail = (req: Request, res: Response) =>
-  res.render("UserDetail", { pageTitle: "User Detail" });
-
+export const userDetail = (req: Request, res: Response) => {
+  const {
+    params: { id }
+  } = req;
+  res.render("UserDetail", { pageTitle: "User Detail", id });
+};
 export const editProfile = (req: Request, res: Response) =>
   res.render("EditProfile", { pageTitle: "Edit Profile" });
 
