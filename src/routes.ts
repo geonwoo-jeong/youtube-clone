@@ -18,6 +18,14 @@ const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
 
+const userDetail = (id?: string) => {
+  if (id) {
+    return `/users/${id}`;
+  } else {
+    return USER_DETAIL;
+  }
+};
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -25,13 +33,7 @@ const routes = {
   logout: LOGOUT,
   search: SEARCH,
   users: USERS,
-  userDetail: (id: any) => {
-    if (id) {
-      return `/users/${id}`;
-    } else {
-      return USER_DETAIL;
-    }
-  },
+  userDetail,
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,

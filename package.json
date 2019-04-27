@@ -31,7 +31,7 @@
     "build": "tsc"
   },
   "nodemonConfig": {
-    "igmore": [
+    "ignore": [
       "./src/**/*.test.ts",
       "./src**/*.spec.ts",
       ".git",
