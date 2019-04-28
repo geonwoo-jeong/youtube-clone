@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { videos as videosDB } from "../fakeDB";
+import routes from "../routes";
 
 export const home = (req: Request, res: Response) =>
   res.render("Home", { pageTitle: "Home", videosDB });
@@ -14,14 +15,22 @@ export const search = (req: Request, res: Response) => {
 export const videos = (req: Request, res: Response) =>
   res.render("Videos", { pageTitle: "Vidoes" });
 
-export const upload = (req: Request, res: Response) =>
+export const getUpload = (req: Request, res: Response) =>
   res.render("Upload", { pageTitle: "Upload" });
 
-export const videoDetail = (req: Request, res: Response) =>
-  res.render("Video Detail", { pageTitle: "Video Detail" });
+export const postUpload = (req: Request, res: Response) => {
+  // const {
+  //   body: { file, title, description }
+  // } = req;
 
+  // TODO: Upload and save Video
+  res.redirect(routes.videoDetail());
+};
+
+export const videoDetail = (req: Request, res: Response) =>
+  res.render("VideoDetail", { pageTitle: "Video Detail" });
 export const editVideo = (req: Request, res: Response) =>
-  res.render("Edit Video", { pageTitle: "Edit Video" });
+  res.render("EditVideo", { pageTitle: "Edit Video" });
 
 export const deleteVideo = (req: Request, res: Response) =>
-  res.render("Delete Video", { pageTitle: "Delete Video" });
+  res.render("DeleteVideo", { pageTitle: "Delete Video" });

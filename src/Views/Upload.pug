@@ -1,0 +1,10 @@
+extends Layouts/Main
+
+block content
+    div.form-container
+        form(action=`${routes.videos}${routes.upload}`, method="post")
+            label(for="file") Video File
+            input(type="file", id="file", name="file", required=true)
+            input(type="text", placeholder="Title", name="title", required=true)
+            textarea(name="description", placeholder="Description", required=true)
+            input(type="submit", value="Upload Video", required=true)

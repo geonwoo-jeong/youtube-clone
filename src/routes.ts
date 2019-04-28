@@ -26,6 +26,14 @@ const userDetail = (id?: string) => {
   }
 };
 
+const videoDetail = (id?: string) => {
+  if (id) {
+    return `/videos/${id}`;
+  } else {
+    return VIDEO_DETAIL;
+  }
+};
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -38,7 +46,7 @@ const routes = {
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
-  videoDetail: VIDEO_DETAIL,
+  videoDetail,
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO
 };
