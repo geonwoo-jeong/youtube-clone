@@ -1,6 +1,7 @@
 import "./config";
-import app from "./app";
 import "./db";
+import "./Models/Video";
+import app from "./app";
 
 const PORT = process.env.PORT;
 
