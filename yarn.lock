@@ -22,6 +22,13 @@
     "@types/connect" "*"
     "@types/node" "*"
 
+"@types/bson@*":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-4.0.0.tgz#9073772679d749116eb1dfca56f8eaac6d59cc7a"
+  integrity sha512-pq/rqJwJWkbS10crsG5bgnrisL8pML79KlMKQMoQwLUjlPAkrUHMvHJ3oGwE7WHR61Lv/nadMwXVAD2b+fpD8Q==
+  dependencies:
+    "@types/node" "*"
+
 "@types/connect@*":
   version "3.4.32"
   resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.32.tgz#aa0e9616b9435ccad02bc52b5b454ffc2c70ba28"
@@ -35,6 +42,13 @@
   integrity sha512-iJY6B3ZGufLiDf2OCAgiAAQuj1sMKC/wz/7XCEjZ+/MDuultfFJuSwrBKcLSmJ5iYApLzCCYBYJZs0Ws8GPmwA==
   dependencies:
     "@types/express" "*"
+
+"@types/dotenv@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@types/dotenv/-/dotenv-6.1.1.tgz#f7ce1cc4fe34f0a4373ba99fefa437b0bec54b46"
+  integrity sha512-ftQl3DtBvqHl9L16tpqqzA4YzCSXZfi7g8cQceTz5rOlYtk/IZbFjAv3mLOQlNIgOaylCQWQoBdDQHPgEBJPHg==
+  dependencies:
+    "@types/node" "*"
 
 "@types/express-serve-static-core@*":
   version "4.16.2"
@@ -64,6 +78,22 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
   integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
+
+"@types/mongodb@*":
+  version "3.1.25"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.1.25.tgz#1da0219b7d8c08859f811774673c803f906e5e05"
+  integrity sha512-BSrjY1J8Nf9hin6p0Tv8b8PIfpTq+Xp4TVSRxZbO3jhvIeu1EKZ4xk0t8tms5vA/qMIkfNX2iciOThFhXPL93g==
+  dependencies:
+    "@types/bson" "*"
+    "@types/node" "*"
+
+"@types/mongoose@^5.3.27":
+  version "5.3.27"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.27.tgz#bfa893deab793118e59d7c3ea5deb5e2e84c0599"
+  integrity sha512-1bQcQaYw4kN9mMuJC54FcfjyYe2gtxbUj9OAvrUA/5G2rSv0fuvu2jplizXqyADgBcXzPVEglDNzT3YrztWLoQ==
+  dependencies:
+    "@types/mongodb" "*"
+    "@types/node" "*"
 
 "@types/morgan@^1.7.35":
   version "1.7.35"
@@ -738,6 +768,11 @@ dot-prop@^4.1.0:
   integrity sha512-tUMXrxlExSW6U2EXiiKGSBVdYgtV8qlHL+C10TsW4PURY/ic+eaysnSkwB4kA/mBlCyy/IKDJ+Lc3wbWeaXtuQ==
   dependencies:
     is-obj "^1.0.0"
+
+dotenv@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
+  integrity sha512-M3NhsLbV1i6HuGzBUH8vXrtxOk+tWmzWKDMbAVSUp3Zsjm7ywFeuwrUXhmhQyRK1q5B5GGy7hcXPbj3bnfZg2g==
 
 duplexer3@^0.1.4:
   version "0.1.4"

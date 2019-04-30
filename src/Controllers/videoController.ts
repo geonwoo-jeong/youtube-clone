@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
-import { videos as videosDB } from "../fakeDB";
 import routes from "../routes";
 
 export const home = (req: Request, res: Response) =>
-  res.render("Home", { pageTitle: "Home", videosDB });
+  res.render("Home", { pageTitle: "Home" });
 
 export const search = (req: Request, res: Response) => {
   const {
     query: { term }
   } = req;
-  res.render("Search", { pageTitle: "Search", term, videosDB });
+  res.render("Search", { pageTitle: "Search", term });
 };
 
 export const videos = (req: Request, res: Response) =>
