@@ -14,6 +14,12 @@ const VideoSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  video: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Video"
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now
