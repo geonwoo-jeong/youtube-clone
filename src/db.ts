@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://localhost:27017/youtube-clone", {
+mongoose.connect(process.env.MONGO_URL!, {
   useNewUrlParser: true,
   useFindAndModify: false
 });
