@@ -3,7 +3,7 @@ include Mixins/VideoBlock
 
 block content
     div.videos
-        each video in videosDB
+        each video in videos
             +VideoBlock({
                 id: video.id,
                 title: video.title,
