@@ -18,6 +18,9 @@ const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
 
+// Uploads
+const UPLOADS = "/uploads";
+
 const userDetail = (id?: string) => {
   if (id) {
     return `/users/${id}`;
@@ -48,7 +51,8 @@ const routes = {
   upload: UPLOAD,
   videoDetail,
   editVideo: EDIT_VIDEO,
-  deleteVideo: DELETE_VIDEO
+  deleteVideo: DELETE_VIDEO,
+  uploads: UPLOADS
 };
 
 export default routes;
