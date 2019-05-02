@@ -1,5 +1,6 @@
 import { Router } from "express";
 import routes from "../routes";
+import { uploadVideo } from "../middlewares";
 import {
   videos,
   getUpload,
@@ -13,7 +14,7 @@ const videoRouter = Router();
 
 videoRouter.get(routes.videos, videos);
 videoRouter.get(routes.upload, getUpload);
-videoRouter.get(routes.upload, postUpload);
+videoRouter.post(routes.upload, uploadVideo, postUpload);
 
 videoRouter.get(routes.videoDetail(), videoDetail);
 videoRouter.get(routes.editVideo, editVideo);
