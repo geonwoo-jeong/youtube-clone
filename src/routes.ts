@@ -45,6 +45,14 @@ const editVideo = (id?: string) => {
   }
 };
 
+const deleteVideo = (id?: string) => {
+  if (id) {
+    return `/videos/${id}/delete`;
+  } else {
+    return DELETE_VIDEO;
+  }
+};
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -59,7 +67,7 @@ const routes = {
   upload: UPLOAD,
   videoDetail,
   editVideo,
-  deleteVideo: DELETE_VIDEO,
+  deleteVideo,
   uploads: UPLOADS
 };
 

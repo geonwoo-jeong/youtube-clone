@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 interface IVideo extends mongoose.Document {
-  id: string;
+  _id: string;
   fileUrl: string;
   title: string;
   description: string;

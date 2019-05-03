@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 interface IComment extends mongoose.Document {
-  id: string;
+  _id: string;
   text: string;
   createAt: Date;
 }
