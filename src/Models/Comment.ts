@@ -7,14 +7,14 @@ interface IComment extends mongoose.Document {
 }
 
 const CommentSchema = new mongoose.Schema({
-  text: {
-    type: String,
-    required: "Text is required"
-  },
   createdAt: {
+    default: Date.now,
     type: Date,
-    default: Date.now
-  }
+  },
+  text: {
+    required: "Text is required",
+    type: String,
+  },
 });
 
 const model = mongoose.model<IComment>("Comment", CommentSchema);

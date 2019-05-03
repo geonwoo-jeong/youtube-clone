@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import routes from "../routes";
 import Video from "../Models/Video";
+import routes from "../routes";
 
 export const home = async (req: Request, res: Response) => {
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).sort({ _id: -1 });
     res.render("Home", { pageTitle: "Home", videos });
   } catch (error) {
     console.log(error);
@@ -19,7 +19,7 @@ export const search = (req: Request, res: Response) => {
 };
 
 export const videos = (req: Request, res: Response) =>
-  res.render("Videos", { pageTitle: "Vidoes" });
+  res.render("Videos", { pageTitle: "Videos" });
 
 export const getUpload = (req: Request, res: Response) =>
   res.render("Upload", { pageTitle: "Upload" });
@@ -30,9 +30,9 @@ export const postUpload = async (req: Request, res: Response) => {
     file: { path: fileUrl }
   } = req;
   const newVideo = await Video.create({
+    description,
     fileUrl,
-    title,
-    description
+    title
   });
   res.redirect(routes.videoDetail(newVideo.id));
 };

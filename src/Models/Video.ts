@@ -10,29 +10,29 @@ interface IVideo extends mongoose.Document {
 }
 
 const VideoSchema = new mongoose.Schema({
-  fileUrl: {
-    type: String,
-    required: "File URL is required"
-  },
-  title: {
-    type: String,
-    required: "Title is required"
+  createdAt: {
+    default: Date.now,
+    type: Date,
   },
   description: String,
-  views: {
-    type: Number,
-    default: 0
+  fileUrl: {
+    required: "File URL is required",
+    type: String,
+  },
+  title: {
+    required: "Title is required",
+    type: String,
   },
   video: [
     {
+      ref: "Video",
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Video"
     }
   ],
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+  views: {
+    default: 0,
+    type: Number,
+  },
 });
 
 const model = mongoose.model<IVideo>("Video", VideoSchema);

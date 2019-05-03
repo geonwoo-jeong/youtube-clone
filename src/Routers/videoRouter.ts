@@ -1,15 +1,15 @@
 import { Router } from "express";
-import routes from "../routes";
-import { uploadVideo } from "../middlewares";
 import {
-  videos,
-  getUpload,
-  postUpload,
-  videoDetail,
   deleteVideo,
   getEditVideo,
-  postEditVideo
+  getUpload,
+  postEditVideo,
+  postUpload,
+  videoDetail,
+  videos,
 } from "../Controllers/videoController";
+import { uploadVideo } from "../middlewares";
+import routes from "../routes";
 
 const videoRouter = Router();
 

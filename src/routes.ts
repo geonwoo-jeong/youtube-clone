@@ -54,21 +54,21 @@ const deleteVideo = (id?: string) => {
 };
 
 const routes = {
+  changePassword: CHANGE_PASSWORD,
+  deleteVideo,
+  editProfile: EDIT_PROFILE,
+  editVideo,
   home: HOME,
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
   search: SEARCH,
-  users: USERS,
-  userDetail,
-  editProfile: EDIT_PROFILE,
-  changePassword: CHANGE_PASSWORD,
-  videos: VIDEOS,
   upload: UPLOAD,
+  uploads: UPLOADS,
+  userDetail,
+  users: USERS,
   videoDetail,
-  editVideo,
-  deleteVideo,
-  uploads: UPLOADS
+  videos: VIDEOS,
 };
 
 export default routes;
