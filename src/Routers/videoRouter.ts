@@ -6,18 +6,27 @@ import {
   getUpload,
   postUpload,
   videoDetail,
-  editVideo,
-  deleteVideo
+  deleteVideo,
+  getEditVideo,
+  postEditVideo
 } from "../Controllers/videoController";
 
 const videoRouter = Router();
 
 videoRouter.get(routes.videos, videos);
+
+// Upload
 videoRouter.get(routes.upload, getUpload);
 videoRouter.post(routes.upload, uploadVideo, postUpload);
 
+// Edit Video
+videoRouter.get(routes.editVideo(), getEditVideo);
+videoRouter.post(routes.editVideo(), postEditVideo);
+
+// Video Detail
 videoRouter.get(routes.videoDetail(), videoDetail);
-videoRouter.get(routes.editVideo, editVideo);
+
+// Delete Video
 videoRouter.get(routes.deleteVideo, deleteVideo);
 
 export default videoRouter;

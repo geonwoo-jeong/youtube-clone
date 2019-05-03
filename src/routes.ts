@@ -37,6 +37,14 @@ const videoDetail = (id?: string) => {
   }
 };
 
+const editVideo = (id?: string) => {
+  if (id) {
+    return `/videos/${id}/edit`;
+  } else {
+    return EDIT_VIDEO;
+  }
+};
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -50,7 +58,7 @@ const routes = {
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail,
-  editVideo: EDIT_VIDEO,
+  editVideo,
   deleteVideo: DELETE_VIDEO,
   uploads: UPLOADS
 };

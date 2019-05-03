@@ -1,5 +1,13 @@
 import mongoose from "mongoose";
 
+interface IVideo extends mongoose.Document {
+  fileUrl: string;
+  title: string;
+  description: string;
+  video: string;
+  createAt: number;
+}
+
 const VideoSchema = new mongoose.Schema({
   fileUrl: {
     type: String,
@@ -26,6 +34,6 @@ const VideoSchema = new mongoose.Schema({
   }
 });
 
-const model = mongoose.model("Video", VideoSchema);
+const model = mongoose.model<IVideo>("Video", VideoSchema);
 
 export default model;

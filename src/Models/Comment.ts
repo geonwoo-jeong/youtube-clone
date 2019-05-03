@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 
+interface IComment extends mongoose.Document {
+  text: string;
+  createAt: number;
+}
+
 const CommentSchema = new mongoose.Schema({
   text: {
     type: String,
@@ -11,6 +16,6 @@ const CommentSchema = new mongoose.Schema({
   }
 });
 
-const model = mongoose.model("Comment", CommentSchema);
+const model = mongoose.model<IComment>("Comment", CommentSchema);
 
 export default model;
