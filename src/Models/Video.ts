@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 
 interface IVideo extends mongoose.Document {
+  id: string;
   fileUrl: string;
   title: string;
   description: string;
   video: string;
-  createAt: number;
+  createAt: Date;
 }
 
 const VideoSchema = new mongoose.Schema({

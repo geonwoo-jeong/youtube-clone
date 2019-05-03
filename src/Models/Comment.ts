@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 
 interface IComment extends mongoose.Document {
+  id: string;
   text: string;
-  createAt: number;
+  createAt: Date;
 }
 
 const CommentSchema = new mongoose.Schema({
