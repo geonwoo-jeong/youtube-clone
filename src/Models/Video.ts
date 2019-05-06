@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 export interface IVideo extends mongoose.Document {
   _id: string;
+  comments: Comment[];
   fileUrl: string;
   title: string;
   description: string;
@@ -10,6 +11,12 @@ export interface IVideo extends mongoose.Document {
 }
 
 const VideoSchema = new mongoose.Schema({
+  comments: [
+    {
+      ref: "Comment",
+      type: mongoose.Schema.Types.ObjectId
+    }
+  ],
   createdAt: {
     default: Date.now,
     type: Date

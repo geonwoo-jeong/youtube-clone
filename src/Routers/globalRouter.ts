@@ -1,14 +1,14 @@
 import { Router } from "express";
-import routes from "../routes";
-import { home, search } from "../Controllers/videoController";
 import {
   getJoin,
-  postJoin,
+  getLogin,
   logout,
-  postLogin,
-  getLogin
+  postJoin,
+  postLogin
 } from "../Controllers/userController";
+import routes from "../routes";
 
+import { home, search } from "../Controllers/videoController";
 const globalRouter = Router();
 
 globalRouter.get(routes.join, getJoin);
