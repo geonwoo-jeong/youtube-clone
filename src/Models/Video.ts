@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface IVideo extends mongoose.Document {
+export interface IVideo extends mongoose.Document {
   _id: string;
   fileUrl: string;
   title: string;
@@ -12,27 +12,27 @@ interface IVideo extends mongoose.Document {
 const VideoSchema = new mongoose.Schema({
   createdAt: {
     default: Date.now,
-    type: Date,
+    type: Date
   },
   description: String,
   fileUrl: {
     required: "File URL is required",
-    type: String,
+    type: String
   },
   title: {
     required: "Title is required",
-    type: String,
+    type: String
   },
   video: [
     {
       ref: "Video",
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId
     }
   ],
   views: {
     default: 0,
-    type: Number,
-  },
+    type: Number
+  }
 });
 
 const model = mongoose.model<IVideo>("Video", VideoSchema);

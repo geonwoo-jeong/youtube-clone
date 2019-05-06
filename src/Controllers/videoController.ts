@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Video from "../Models/Video";
+import Video, { IVideo } from "../Models/Video";
 import routes from "../routes";
 
 export const home = async (req: Request, res: Response) => {
@@ -11,11 +11,18 @@ export const home = async (req: Request, res: Response) => {
     res.render("Home", { pageTitle: "Home", videos: [] });
   }
 };
-export const search = (req: Request, res: Response) => {
+
+export const search = async (req: Request, res: Response) => {
   const {
     query: { term }
   } = req;
-  res.render("Search", { pageTitle: "Search", term });
+  let videos: IVideo[] = [];
+  try {
+    videos = await Video.find({ title: { $regex: term, $options: "i" } });
+  } catch (error) {
+    console.log(error);
+  }
+  res.render("Search", { pageTitle: "Search", term, videos });
 };
 
 export const videos = (req: Request, res: Response) =>
