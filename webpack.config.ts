@@ -7,7 +7,7 @@ import webpack from "webpack";
 type Mode = "development" | "production" | "none";
 
 const MODE = process.env.WEBPACK_ENV;
-const ENTRY_FILE = path.resolve(__dirname, "assets", "ts", "main.ts");
+const ENTRY_FILE = path.resolve(__dirname, "src/Assets", "ts", "main.ts");
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config: webpack.Configuration = {
@@ -31,7 +31,7 @@ const config: webpack.Configuration = {
           {
             loader: "postcss-loader",
             options: {
-              plugin() {
+              plugins() {
                 return [autoprefixer({ browsers: "cover 99.5%" })];
               }
             }

@@ -88,3 +88,5 @@ typings/
 
 # Video files
 uploads/*
+
+static

@@ -1,12 +1,12 @@
-import express from "express";
-import morgan from "morgan";
-import helmet from "helmet";
-import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { userRouter, videoRouter, globalRouter } from "./Routers";
-import routes from "./routes";
+import cookieParser from "cookie-parser";
+import express from "express";
+import helmet from "helmet";
+import morgan from "morgan";
 import path from "path";
 import { localMiddlewares } from "./middlewares";
+import { globalRouter, userRouter, videoRouter } from "./Routers";
+import routes from "./routes";
 
 const app: express.Application = express();
 
@@ -14,6 +14,7 @@ app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "Views"));
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("static"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

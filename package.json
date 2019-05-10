@@ -49,7 +49,7 @@
   "scripts": {
     "start": "node --inspect=5858 -r ts-node/register ./src/init.ts",
     "start:watch": "nodemon",
-    "webpack": "cross-env WEBPACK_ENV=development TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
+    "build:dev": "cross-env WEBPACK_ENV=development TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -w",
     "build": "tsc"
   },
   "nodemonConfig": {

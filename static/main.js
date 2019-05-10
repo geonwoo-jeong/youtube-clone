@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/ts/main.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/Assets/ts/main.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/scss/styles.scss":
-/*!*********************************!*\
-  !*** ./assets/scss/styles.scss ***!
-  \*********************************/
+/***/ "./src/Assets/scss/styles.scss":
+/*!*************************************!*\
+  !*** ./src/Assets/scss/styles.scss ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -97,17 +97,17 @@
 
 /***/ }),
 
-/***/ "./assets/ts/main.ts":
-/*!***************************!*\
-  !*** ./assets/ts/main.ts ***!
-  \***************************/
+/***/ "./src/Assets/ts/main.ts":
+/*!*******************************!*\
+  !*** ./src/Assets/ts/main.ts ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(/*! ../scss/styles.scss */ "./assets/scss/styles.scss");
+__webpack_require__(/*! ../scss/styles.scss */ "./src/Assets/scss/styles.scss");
 
 
 /***/ })
