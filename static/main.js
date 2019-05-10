@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/scss/styles.scss":
+/*!*********************************!*\
+  !*** ./assets/scss/styles.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./assets/ts/main.ts":
 /*!***************************!*\
   !*** ./assets/ts/main.ts ***!
@@ -96,7 +107,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../scss/styles.scss'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+__webpack_require__(/*! ../scss/styles.scss */ "./assets/scss/styles.scss");
 
 
 /***/ })

@@ -37,7 +37,7 @@ const config: webpack.Configuration = {
             }
           },
           {
-            loader: "scss-loader"
+            loader: "sass-loader"
           }
         ]
       }
