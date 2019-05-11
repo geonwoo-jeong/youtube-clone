@@ -8,7 +8,7 @@ export const localMiddlewares: express.RequestHandler = (req, res, next) => {
   res.locals.siteName = "YouTube-Clone";
   res.locals.routes = routes;
   res.locals.user = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     id: 1
   };
   next();
