@@ -1,12 +1,17 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import status from "http-status-codes";
+import passport = require("passport");
 import User from "../Models/User";
 import routes from "../routes";
 
 export const getJoin = (req: Request, res: Response) =>
   res.render("Join", { pageTitle: "Join" });
 
-export const postJoin = async (req: Request, res: Response) => {
+export const postJoin = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const {
     body: { name, email, password, password2 }
   } = req;
@@ -16,23 +21,24 @@ export const postJoin = async (req: Request, res: Response) => {
     return res.render("Join", { pageTitle: "Join" });
   }
   try {
-    const user = await User.create({
+    const user = await new User({
       name,
       email
     });
     await User.register(user, password);
+    next();
   } catch (error) {
     console.log(error);
   }
-  res.redirect(routes.home);
 };
 
 export const getLogin = (req: Request, res: Response) =>
   res.render("Login", { pageTitle: "Login" });
 
-export const postLogin = (req: Request, res: Response) => {
-  res.redirect(routes.home);
-};
+export const postLogin = passport.authenticate("local", {
+  failureRedirect: routes.login,
+  successRedirect: routes.home
+});
 
 export const logout = (req: Request, res: Response) => {
   // TODO Process Log out
