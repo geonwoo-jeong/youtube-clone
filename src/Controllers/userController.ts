@@ -1,23 +1,30 @@
 import { Request, Response } from "express";
 import status from "http-status-codes";
+import User from "../Models/User";
 import routes from "../routes";
 
 export const getJoin = (req: Request, res: Response) =>
   res.render("Join", { pageTitle: "Join" });
 
-export const postJoin = (req: Request, res: Response) => {
+export const postJoin = async (req: Request, res: Response) => {
   const {
-    body: { password, password2 }
+    body: { name, email, password, password2 }
   } = req;
 
   if (password !== password2) {
     res.status(status.BAD_REQUEST);
     return res.render("Join", { pageTitle: "Join" });
   }
-
+  try {
+    const user = await User.create({
+      name,
+      email
+    });
+    await User.register(user, password);
+  } catch (error) {
+    console.log(error);
+  }
   res.redirect(routes.home);
-  // TODO: Register User
-  // TODO: Log User In
 };
 
 export const getLogin = (req: Request, res: Response) =>

@@ -1,11 +1,11 @@
 import { Router } from "express";
-import routes from "../routes";
 import {
-  users,
-  userDetail,
+  changePassword,
   editProfile,
-  changePassword
+  userDetail,
+  users
 } from "../Controllers/userController";
+import routes from "../routes";
 
 const userRouter = Router();
 

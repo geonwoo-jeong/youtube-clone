@@ -9,7 +9,7 @@ interface IUser extends mongoose.Document {
   githubId: number;
 }
 
-const userSchema = new mongoose.Schema({
+const userSchema : PassportLocalSchema = new mongoose.Schema({
   name: String,
   email: String,
   avatarUrl: String,
@@ -19,6 +19,6 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 
-const model = mongoose.model<IUser>("User", userSchema as PassportLocalSchema);
+const model = mongoose.model<IUser>("User", userSchema);
 
 export default model;
