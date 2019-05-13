@@ -1,4 +1,4 @@
-import mongoose, { PassportLocalSchema } from "mongoose";
+import mongoose from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
 
 interface IUser extends mongoose.Document {
@@ -9,7 +9,7 @@ interface IUser extends mongoose.Document {
   githubId: number;
 }
 
-const userSchema : PassportLocalSchema = new mongoose.Schema({
+const userSchema: mongoose.PassportLocalSchema = new mongoose.Schema({
   name: String,
   email: String,
   avatarUrl: String,

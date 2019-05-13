@@ -1,8 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import status from "http-status-codes";
-import passport = require("passport");
+import passport from "passport";
 import User from "../Models/User";
 import routes from "../routes";
+
+const AuthenticateOptions: passport.AuthenticateOptions = {
+  failureRedirect: routes.login,
+  successRedirect: routes.home
+};
 
 export const getJoin = (req: Request, res: Response) =>
   res.render("Join", { pageTitle: "Join" });
@@ -28,17 +33,14 @@ export const postJoin = async (
     await User.register(user, password);
     next();
   } catch (error) {
-    console.log(error);
+    res.redirect(routes.home);
   }
 };
 
 export const getLogin = (req: Request, res: Response) =>
   res.render("Login", { pageTitle: "Login" });
 
-export const postLogin = passport.authenticate("local", {
-  failureRedirect: routes.login,
-  successRedirect: routes.home
-});
+export const postLogin = passport.authenticate("local", AuthenticateOptions);
 
 export const logout = (req: Request, res: Response) => {
   // TODO Process Log out

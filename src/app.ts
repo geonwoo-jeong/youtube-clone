@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import express from "express";
+import expressSession from "express-session";
 import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
@@ -9,6 +10,12 @@ import { localMiddlewares } from "./middlewares";
 import "./passport";
 import { globalRouter, userRouter, videoRouter } from "./Routers";
 import routes from "./routes";
+
+const expressSessionOptions: expressSession.SessionOptions = {
+  resave: true,
+  saveUninitialized: false,
+  secret: process.env.COOKIE_SECRET as string
+};
 
 const app: express.Application = express();
 
@@ -21,6 +28,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(expressSession(expressSessionOptions));
 app.use(localMiddlewares);
 app.use(passport.initialize());
 app.use(passport.session());
