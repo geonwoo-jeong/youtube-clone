@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 export interface IVideo extends mongoose.Document {
-  _id: string;
   comments: Comment[];
   fileUrl: string;
   title: string;

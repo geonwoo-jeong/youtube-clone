@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 
-mongoose.connect(process.env.MONGO_URL!, {
+const MONGO_URL: string = process.env.MONGO_URL!;
+const ConnectionOpenOptions: mongoose.ConnectionOpenOptions = {
   useFindAndModify: false,
   useNewUrlParser: true
-});
+};
+
+mongoose.connect(MONGO_URL, ConnectionOpenOptions);
 
 const db = mongoose.connection;
 

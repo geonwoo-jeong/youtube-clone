@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 interface IComment extends mongoose.Document {
-  _id: string;
   text: string;
   createAt: Date;
 }
@@ -9,12 +8,12 @@ interface IComment extends mongoose.Document {
 const CommentSchema = new mongoose.Schema({
   createdAt: {
     default: Date.now,
-    type: Date,
+    type: Date
   },
   text: {
     required: "Text is required",
-    type: String,
-  },
+    type: String
+  }
 });
 
 const model = mongoose.model<IComment>("Comment", CommentSchema);

@@ -68,7 +68,7 @@ const routes = {
   userDetail,
   users: USERS,
   videoDetail,
-  videos: VIDEOS,
+  videos: VIDEOS
 };
 
 export default routes;

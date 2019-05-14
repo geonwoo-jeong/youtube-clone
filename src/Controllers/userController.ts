@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import Express from "express";
 import status from "http-status-codes";
 import passport from "passport";
 import User from "../Models/User";
@@ -9,13 +9,13 @@ const AuthenticateOptions: passport.AuthenticateOptions = {
   successRedirect: routes.home
 };
 
-export const getJoin = (req: Request, res: Response) =>
+export const getJoin = (req: Express.Request, res: Express.Response) =>
   res.render("Join", { pageTitle: "Join" });
 
 export const postJoin = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  req: Express.Request,
+  res: Express.Response,
+  next: Express.NextFunction
 ) => {
   const {
     body: { name, email, password, password2 }
@@ -27,8 +27,8 @@ export const postJoin = async (
   }
   try {
     const user = await new User({
-      name,
-      email
+      email,
+      name
     });
     await User.register(user, password);
     next();
@@ -37,27 +37,27 @@ export const postJoin = async (
   }
 };
 
-export const getLogin = (req: Request, res: Response) =>
+export const getLogin = (req: Express.Request, res: Express.Response) =>
   res.render("Login", { pageTitle: "Login" });
 
 export const postLogin = passport.authenticate("local", AuthenticateOptions);
 
-export const logout = (req: Request, res: Response) => {
+export const logout = (req: Express.Request, res: Express.Response) => {
   // TODO Process Log out
   res.redirect(routes.home);
 };
 
-export const users = (req: Request, res: Response) =>
+export const users = (req: Express.Request, res: Express.Response) =>
   res.render("Users", { pageTitle: "Users" });
 
-export const userDetail = (req: Request, res: Response) => {
+export const userDetail = (req: Express.Request, res: Express.Response) => {
   const {
     params: { id }
   } = req;
   res.render("UserDetail", { pageTitle: "User Detail", id });
 };
-export const editProfile = (req: Request, res: Response) =>
+export const editProfile = (req: Express.Request, res: Express.Response) =>
   res.render("EditProfile", { pageTitle: "Edit Profile" });
 
-export const changePassword = (req: Request, res: Response) =>
+export const changePassword = (req: Express.Request, res: Express.Response) =>
   res.render("ChangePassword", { pageTitle: "Change Password" });
