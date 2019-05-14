@@ -1,3 +1,4 @@
+/* tslint:disable:ordered-imports */
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import express from "express";
@@ -7,9 +8,9 @@ import morgan from "morgan";
 import passport from "passport";
 import path from "path";
 import { localMiddlewares } from "./middlewares";
-import "./passport";
 import { globalRouter, userRouter, videoRouter } from "./Routers";
 import routes from "./routes";
+import "./passport";
 
 const expressSessionOptions: expressSession.SessionOptions = {
   resave: true,
@@ -29,9 +30,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(expressSession(expressSessionOptions));
-app.use(localMiddlewares);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(localMiddlewares);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);

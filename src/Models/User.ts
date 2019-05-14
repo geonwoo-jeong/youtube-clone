@@ -2,19 +2,19 @@ import mongoose from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
 
 interface IUser extends mongoose.Document {
-  name: string;
-  email: string;
   avatarUrl: string;
+  email: string;
   facebookId: number;
   githubId: number;
+  name: string;
 }
 
 const userSchema: mongoose.PassportLocalSchema = new mongoose.Schema({
-  name: String,
-  email: String,
   avatarUrl: String,
+  email: String,
   facebookId: Number,
-  githubId: Number
+  githubId: Number,
+  name: String
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: "email" });

@@ -25,6 +25,7 @@ export const postJoin = async (
     res.status(status.BAD_REQUEST);
     return res.render("Join", { pageTitle: "Join" });
   }
+
   try {
     const user = await new User({
       email,
@@ -33,6 +34,7 @@ export const postJoin = async (
     await User.register(user, password);
     next();
   } catch (error) {
+    console.log(error);
     res.redirect(routes.home);
   }
 };

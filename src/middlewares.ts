@@ -8,6 +8,7 @@ export const localMiddlewares: express.RequestHandler = (req, res, next) => {
   res.locals.siteName = "YouTube-Clone";
   res.locals.routes = routes;
   res.locals.user = req.user || null;
+
   console.log("=------");
   console.log(req.user);
   next();
