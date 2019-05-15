@@ -1,9 +1,11 @@
 /* tslint:disable:ordered-imports */
 import bodyParser from "body-parser";
+import ConnectMongo from "connect-mongo";
 import cookieParser from "cookie-parser";
 import express from "express";
 import expressSession from "express-session";
 import helmet from "helmet";
+import mongoose from "mongoose";
 import morgan from "morgan";
 import passport from "passport";
 import path from "path";
@@ -12,10 +14,17 @@ import { globalRouter, userRouter, videoRouter } from "./Routers";
 import routes from "./routes";
 import "./passport";
 
+const CookieStore = ConnectMongo(expressSession);
+
+const mongooseConnectionOptions: ConnectMongo.MogooseConnectionOptions = {
+  mongooseConnection: mongoose.connection
+};
+
 const expressSessionOptions: expressSession.SessionOptions = {
   resave: true,
   saveUninitialized: false,
-  secret: process.env.COOKIE_SECRET as string
+  secret: process.env.COOKIE_SECRET as string,
+  store: new CookieStore(mongooseConnectionOptions)
 };
 
 const app: express.Application = express();
