@@ -11,4 +11,20 @@ export const localMiddlewares: express.RequestHandler = (req, res, next) => {
   next();
 };
 
+export const onlyPublic: express.RequestHandler = (req, res, next) => {
+  if (req.user) {
+    res.redirect(routes.home);
+  } else {
+    next();
+  }
+};
+
+export const onlyPrivate: express.RequestHandler = (req, res, next) => {
+  if (!req.user) {
+    res.redirect(routes.home);
+  } else {
+    next();
+  }
+};
+
 export const uploadVideo = multerVideo.single("videoFile");

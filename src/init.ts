@@ -1,9 +1,8 @@
 /* tslint:disable:ordered-imports */
-
 import "./config";
 import "./db";
-import "./models";
 import app from "./app";
+import "./models";
 
 const PORT = process.env.PORT;
 

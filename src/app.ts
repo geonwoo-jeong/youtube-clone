@@ -1,11 +1,11 @@
 /* tslint:disable:ordered-imports */
 import bodyParser from "body-parser";
-import ConnectMongo from "connect-mongo";
 import cookieParser from "cookie-parser";
 import express from "express";
+import mongoose from "mongoose";
+import ConnectMongo from "connect-mongo";
 import expressSession from "express-session";
 import helmet from "helmet";
-import mongoose from "mongoose";
 import morgan from "morgan";
 import passport from "passport";
 import path from "path";

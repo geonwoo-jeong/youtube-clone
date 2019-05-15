@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const MONGO_URL: string = process.env.MONGO_URL!;
-const ConnectionOptions: mongoose.ConnectionOptions = {
+
+const connectionOptions: mongoose.ConnectionOptions = {
   useFindAndModify: false,
   useNewUrlParser: true
 };
 
-mongoose.connect(MONGO_URL, ConnectionOptions);
+mongoose.connect(MONGO_URL, connectionOptions);
 
 const db = mongoose.connection;
 
