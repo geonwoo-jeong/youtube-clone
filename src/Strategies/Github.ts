@@ -2,15 +2,31 @@ import passport from "passport";
 import github from "passport-github2";
 import routes from "../routes";
 
+const callbackURL = process.env.PASSPORT_GITHUB_CALLBACK_URL;
+const clientID = process.env.PASSPORT_GITHUB_CLIENT;
+const clientSecret = process.env.PASSPORT_GITHUB_SECRET;
+
+if (typeof callbackURL === "undefined") {
+  throw new Error("[Github Auth] callbackURL is undefined");
+}
+
+if (typeof clientID === "undefined") {
+  throw new Error("[Github Auth] clientID is undefined");
+}
+
+if (typeof clientSecret === "undefined") {
+  throw new Error("[Github Auth] clientSecret is undefined");
+}
+
 const AuthenticateOptions: passport.AuthenticateOptions = {
   failureRedirect: routes.login,
   successRedirect: routes.home
 };
 
 const GithubStrategyOptions: github.StrategyOptions = {
-  callbackURL: process.env.PASSPORT_GITHUB_CALLBACK_URL!,
-  clientID: process.env.PASSPORT_GITHUB_CLIENT!,
-  clientSecret: process.env.PASSPORT_GITHUB_SECRET!
+  callbackURL,
+  clientID,
+  clientSecret
 };
 
 const githubLoginCallBack = (

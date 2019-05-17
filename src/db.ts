@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
-const MONGO_URL: string = process.env.MONGO_URL!;
+const MONGO_URL = process.env.MONGO_URL;
+
+if (typeof MONGO_URL === "undefined") {
+  throw new Error("[mongo] MONGO_URL is undefined");
+}
 
 const connectionOptions: mongoose.ConnectionOptions = {
   useFindAndModify: false,

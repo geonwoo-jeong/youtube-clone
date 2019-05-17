@@ -14,6 +14,12 @@ import { globalRouter, userRouter, videoRouter } from "./Routers";
 import routes from "./routes";
 import "./passport";
 
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
+
+if (typeof COOKIE_SECRET === "undefined") {
+  throw new Error("[cookie] COOKIE_SECRET is undefined");
+}
+
 const CookieStore = ConnectMongo(expressSession);
 
 const mongooseConnectionOptions: ConnectMongo.MogooseConnectionOptions = {
@@ -23,7 +29,7 @@ const mongooseConnectionOptions: ConnectMongo.MogooseConnectionOptions = {
 const expressSessionOptions: expressSession.SessionOptions = {
   resave: true,
   saveUninitialized: false,
-  secret: process.env.COOKIE_SECRET as string,
+  secret: COOKIE_SECRET,
   store: new CookieStore(mongooseConnectionOptions)
 };
 

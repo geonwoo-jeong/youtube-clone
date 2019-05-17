@@ -10,6 +10,10 @@ const MODE = process.env.WEBPACK_ENV;
 const ENTRY_FILE = path.resolve(__dirname, "src/Assets", "ts", "main.ts");
 const OUTPUT_DIR = path.join(__dirname, "static");
 
+if (typeof MODE === "undefined") {
+  throw new Error("[Webpack] MODE is undefined");
+}
+
 const config: webpack.Configuration = {
   devtool: "source-map",
   entry: ENTRY_FILE,

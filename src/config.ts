@@ -1,7 +1,13 @@
 import dotenv from "dotenv";
 import path from "path";
 
-const isProduction = process.env.NODE_ENV === "production" ? true : false;
+const NODE_ENV = process.env.NODE_NEV;
+
+if (typeof NODE_ENV === "undefined") {
+  throw new Error("NODE_ENV is undefined");
+}
+
+const isProduction = NODE_ENV === "production" ? true : false;
 
 isProduction
   ? dotenv.config({ path: path.join(__dirname, "../.env") })
