@@ -1,5 +1,11 @@
 import passport from "passport";
 import github from "passport-github2";
+import routes from "../routes";
+
+const AuthenticateOptions: passport.AuthenticateOptions = {
+  failureRedirect: routes.login,
+  successRedirect: routes.home
+};
 
 const GithubStrategyOptions: github.StrategyOptions = {
   callbackURL: process.env.PASSPORT_GITHUB_CALLBACK_URL!,
@@ -20,3 +26,6 @@ export const GithubStrategy = new github.Strategy(
   GithubStrategyOptions,
   githubLoginCallBack
 );
+
+export const githubLogin = passport.authenticate("github");
+export const githubAuth = passport.authenticate("github", AuthenticateOptions);

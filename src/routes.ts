@@ -21,6 +21,10 @@ const DELETE_VIDEO = "/:id/delete";
 // Uploads
 const UPLOADS = "/uploads";
 
+// Github
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
+
 const userDetail = (id?: string) => {
   if (id) {
     return `/users/${id}`;
@@ -58,6 +62,8 @@ const routes = {
   deleteVideo,
   editProfile: EDIT_PROFILE,
   editVideo,
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
   home: HOME,
   join: JOIN,
   login: LOGIN,

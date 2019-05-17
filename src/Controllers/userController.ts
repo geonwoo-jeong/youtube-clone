@@ -1,13 +1,7 @@
 import Express from "express";
 import status from "http-status-codes";
-import passport from "passport";
 import User from "../Models/User";
 import routes from "../routes";
-
-const AuthenticateOptions: passport.AuthenticateOptions = {
-  failureRedirect: routes.login,
-  successRedirect: routes.home
-};
 
 export const getJoin = (req: Express.Request, res: Express.Response) =>
   res.render("Join", { pageTitle: "Join" });
@@ -42,10 +36,8 @@ export const postJoin = async (
 export const getLogin = (req: Express.Request, res: Express.Response) =>
   res.render("Login", { pageTitle: "Login" });
 
-export const postLogin = passport.authenticate("local", AuthenticateOptions);
-
-export const logout = (req: Express.Request, res: Express.Response) => {
-  // TODO Process Log out
+export const logout = async (req: Express.Request, res: Express.Response) => {
+  await req.logout();
   res.redirect(routes.home);
 };
 
