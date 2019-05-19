@@ -1,5 +1,6 @@
 import passport from "passport";
 import github from "passport-github2";
+import User from "../Models/User"
 import routes from "../routes";
 
 const callbackURL = process.env.PASSPORT_GITHUB_CALLBACK_URL;
@@ -29,13 +30,32 @@ const GithubStrategyOptions: github.StrategyOptions = {
   clientSecret
 };
 
-const githubLoginCallBack = (
+const githubLoginCallBack = async (
   accessToken: string,
   refreshToken: string,
   profile: github.Profile,
   done: (error: any, user?: any) => void
 ) => {
-  console.log(accessToken, refreshToken, profile, done);
+  const {
+    _json: { id, avatar_url, name, email }
+  } = profile;
+  try {
+    const user = await User.find({ email})
+    if (user) {
+      user.githubId = id;
+      user.save();
+      return cb(null, user);
+    }
+
+    const newUser = await User.create({
+      email,
+      name,
+      githubId: id,
+      avatarUrl: avatar_url
+    })
+    return cb(null, newUser);
+    
+  }
 };
 
 export const GithubStrategy = new github.Strategy(
