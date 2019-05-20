@@ -44,7 +44,10 @@ export const logout = async (req: Express.Request, res: Express.Response) => {
 export const users = (req: Express.Request, res: Express.Response) =>
   res.render("Users", { pageTitle: "Users" });
 
-export const userDetail = (req: Express.Request, res: Express.Response) => {
+export const userDetail = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
   if (req.user && req.user._id) {
     const { user } = req;
     res.render("UserDetail", { pageTitle: "User Detail", user });
@@ -52,7 +55,12 @@ export const userDetail = (req: Express.Request, res: Express.Response) => {
     const {
       params: { id }
     } = req;
-    res.render("UserDetail", { pageTitle: "User Detail", id });
+    try {
+      const user = await User.findById(id);
+      res.render("UserDetail", { pageTitle: "User Detail", user });
+    } catch (error) {
+      res.redirect(routes.home);
+    }
   }
 };
 export const editProfile = (req: Express.Request, res: Express.Response) =>

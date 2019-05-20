@@ -67,12 +67,12 @@ if (typeof clientSecret === "undefined") {
   throw new Error("[Github Auth] clientSecret is undefined");
 }
 
-const AuthenticateOptions: passport.AuthenticateOptions = {
+const authenticateOptions: passport.AuthenticateOptions = {
   failureRedirect: routes.login,
   successRedirect: routes.home
 };
 
-const GithubStrategyOptions: github.StrategyOptions = {
+const githubStrategyOptions: github.StrategyOptions = {
   callbackURL,
   clientID,
   clientSecret
@@ -109,9 +109,9 @@ const githubLoginCallBack = async (
 };
 
 export const GithubStrategy = new github.Strategy(
-  GithubStrategyOptions,
+  githubStrategyOptions,
   githubLoginCallBack
 );
 
 export const githubLogin = passport.authenticate("github");
-export const githubAuth = passport.authenticate("github", AuthenticateOptions);
+export const githubAuth = passport.authenticate("github", authenticateOptions);

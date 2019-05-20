@@ -25,6 +25,10 @@ const UPLOADS = "/uploads";
 const GITHUB = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
+// Facebook
+const FACEBOOK = "/auth/facebook";
+const FACEBOOK_CALLBACK = "/auth/facebook/callback";
+
 const userDetail = (id?: string) => {
   if (id) {
     return `/users/${id}`;
@@ -62,6 +66,8 @@ const routes = {
   deleteVideo,
   editProfile: EDIT_PROFILE,
   editVideo,
+  facebook: FACEBOOK,
+  facebookCallback: FACEBOOK_CALLBACK,
   github: GITHUB,
   githubCallback: GITHUB_CALLBACK,
   home: HOME,
