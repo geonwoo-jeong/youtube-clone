@@ -45,10 +45,15 @@ export const users = (req: Express.Request, res: Express.Response) =>
   res.render("Users", { pageTitle: "Users" });
 
 export const userDetail = (req: Express.Request, res: Express.Response) => {
-  const {
-    params: { id }
-  } = req;
-  res.render("UserDetail", { pageTitle: "User Detail", id });
+  if (req.user && req.user._id) {
+    const { user } = req;
+    res.render("UserDetail", { pageTitle: "User Detail", user });
+  } else {
+    const {
+      params: { id }
+    } = req;
+    res.render("UserDetail", { pageTitle: "User Detail", id });
+  }
 };
 export const editProfile = (req: Express.Request, res: Express.Response) =>
   res.render("EditProfile", { pageTitle: "Edit Profile" });

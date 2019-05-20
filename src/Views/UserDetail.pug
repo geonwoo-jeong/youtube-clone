@@ -1,0 +1,7 @@
+extends Layouts/Main
+
+block content
+    div.user-profile
+        div.user-profile__header
+            img.avatar(src=user.avatarUrl)
+            h4.profile__username=user.name
