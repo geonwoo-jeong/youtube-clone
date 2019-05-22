@@ -84,6 +84,7 @@ const githubLoginCallBack = async (
     if (user) {
       if (!user.githubId) {
         user.githubId = id;
+        user.avatarUrl = avatar_url;
         user.save();
       }
       return callback(null, user);

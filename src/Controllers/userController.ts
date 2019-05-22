@@ -63,8 +63,32 @@ export const userDetail = async (
     }
   }
 };
+
+// Edit Profile
 export const getEditProfile = (req: Express.Request, res: Express.Response) =>
   res.render("EditProfile", { pageTitle: "Edit Profile" });
 
+export const postEditProfile = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const {
+    body: { name, email },
+    file
+  } = req;
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      avatarUrl: file ? file.path : req.user.avatarUrl,
+      email,
+      name
+    });
+    res.redirect("UserDetail");
+  } catch (error) {
+    console.log(error);
+    res.render("EditProfile", { pageTitle: "Edit Profile" });
+  }
+};
+
+// Change Password
 export const changePassword = (req: Express.Request, res: Express.Response) =>
   res.render("ChangePassword", { pageTitle: "Change Password" });
