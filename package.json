@@ -61,7 +61,7 @@
     "webpack-cli": "^3.3.2"
   },
   "scripts": {
-    "start": "NODE_ENV=development node --inspect=5858 -r ts-node/register ./src/init.ts",
+    "start": "cross-env NODE_ENV=development node --inspect=5858 -r ts-node/register ./src/init.ts",
     "start:watch": "nodemon",
     "build:dev": "cross-env WEBPACK_ENV=development TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -w",
     "build": "tsc"
