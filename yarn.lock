@@ -63,10 +63,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/connect-mongo@^0.0.41":
-  version "0.0.41"
-  resolved "https://registry.yarnpkg.com/@types/connect-mongo/-/connect-mongo-0.0.41.tgz#56ef68492ac94efcfeae425ae9badd0bf75aaa89"
-  integrity sha512-l2ork/LNrZftIaYQstJozRHwijmWz7QRbNMIo3UKVDcfsFeh5hyrHHwmurcqOEEstnw1kxaJF4Yr93AykfPsLg==
+"@types/connect-mongo@^0.0.42":
+  version "0.0.42"
+  resolved "https://registry.yarnpkg.com/@types/connect-mongo/-/connect-mongo-0.0.42.tgz#4c833455ae20d38691e085199bdde9dfbadf18d7"
+  integrity sha512-Hrj+dz4yEuGcBz68xjVD5MqFgSkgVWRXrTlQL+5HA6iHcf/CgBJ92qNQpVi65kxmgJL+r8gQ0jDZbLmMYXNrig==
   dependencies:
     "@types/express" "*"
     "@types/express-session" "*"
@@ -144,25 +144,17 @@
     "@types/webpack" "*"
 
 "@types/mongodb@*":
-  version "3.1.25"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.1.25.tgz#1da0219b7d8c08859f811774673c803f906e5e05"
-  integrity sha512-BSrjY1J8Nf9hin6p0Tv8b8PIfpTq+Xp4TVSRxZbO3jhvIeu1EKZ4xk0t8tms5vA/qMIkfNX2iciOThFhXPL93g==
+  version "3.1.27"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.1.27.tgz#989a9815f33f2be601a08b982479a36e139539b6"
+  integrity sha512-DZMG/4iEh771XHw84PWFOb2JuMCKN+czroK3wFz95sGetOQPs8zqa6wjL0hswqH5XYMt0X/ekV6t2sAmSsaafg==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@*":
+"@types/mongoose@*", "@types/mongoose@^5.5.1":
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.5.1.tgz#a96daed080e94498a8cfd61d0bdddf752b6a5c9e"
   integrity sha512-2F6zAhM7zmZunQQ6evPUlonkwaSM7pAUR7NPS9w4lz4wI+LhXPCcHLJq3L6lw6OvkfJH3dvZo0yQWNSe3iEZBg==
-  dependencies:
-    "@types/mongodb" "*"
-    "@types/node" "*"
-
-"@types/mongoose@^5.3.27":
-  version "5.3.27"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.27.tgz#bfa893deab793118e59d7c3ea5deb5e2e84c0599"
-  integrity sha512-1bQcQaYw4kN9mMuJC54FcfjyYe2gtxbUj9OAvrUA/5G2rSv0fuvu2jplizXqyADgBcXzPVEglDNzT3YrztWLoQ==
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"

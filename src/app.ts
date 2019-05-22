@@ -22,7 +22,7 @@ if (typeof COOKIE_SECRET === "undefined") {
 
 const CookieStore = ConnectMongo(expressSession);
 
-const mongooseConnectionOptions: ConnectMongo.MogooseConnectionOptions = {
+const mongooseConnectionOptions: ConnectMongo.MongooseConnectionOptions = {
   mongooseConnection: mongoose.connection
 };
 

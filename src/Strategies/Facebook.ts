@@ -2,22 +2,14 @@ import passport from "passport";
 import facebook from "passport-facebook";
 import User from "../Models/User";
 import routes from "../routes";
+import { checkUndefined } from "../Utils/checkUndefined";
 
-const callbackURL = process.env.PASSPORT_FACEBOOK_CALLBACK_URL;
-const clientID = process.env.PASSPORT_FACEBOOK_APP_ID;
-const clientSecret = process.env.PASSPORT_FACEBOOK_APP_SECRET;
-
-if (typeof callbackURL === "undefined") {
-  throw new Error("[Facebook Auth] callbackURL is undefined");
-}
-
-if (typeof clientID === "undefined") {
-  throw new Error("[Facebook Auth] clientID is undefined");
-}
-
-if (typeof clientSecret === "undefined") {
-  throw new Error("[Facebook Auth] clientSecret is undefined");
-}
+const { callbackURL, clientID, clientSecret } = checkUndefined(
+  process.env.PASSPORT_GITHUB_CALLBACK_URL,
+  process.env.PASSPORT_GITHUB_CLIENT,
+  process.env.PASSPORT_GITHUB_SECRET,
+  "FACEBOOK"
+);
 
 const authenticateOptions: passport.AuthenticateOptions = {
   failureRedirect: routes.login,

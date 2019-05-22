@@ -2,6 +2,7 @@ import passport from "passport";
 import github from "passport-github2";
 import User from "../Models/User";
 import routes from "../routes";
+import { checkUndefined } from "../Utils/checkUndefined";
 
 interface IGithubProfile extends passport.Profile {
   id: string;
@@ -51,21 +52,12 @@ interface IGithubProfile extends passport.Profile {
   };
 }
 
-const callbackURL = process.env.PASSPORT_GITHUB_CALLBACK_URL;
-const clientID = process.env.PASSPORT_GITHUB_CLIENT;
-const clientSecret = process.env.PASSPORT_GITHUB_SECRET;
-
-if (typeof callbackURL === "undefined") {
-  throw new Error("[Github Auth] callbackURL is undefined");
-}
-
-if (typeof clientID === "undefined") {
-  throw new Error("[Github Auth] clientID is undefined");
-}
-
-if (typeof clientSecret === "undefined") {
-  throw new Error("[Github Auth] clientSecret is undefined");
-}
+const { callbackURL, clientID, clientSecret } = checkUndefined(
+  process.env.PASSPORT_GITHUB_CALLBACK_URL,
+  process.env.PASSPORT_GITHUB_CLIENT,
+  process.env.PASSPORT_GITHUB_SECRET,
+  "GITHUB"
+);
 
 const authenticateOptions: passport.AuthenticateOptions = {
   failureRedirect: routes.login,

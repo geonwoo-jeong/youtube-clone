@@ -1,3 +1,9 @@
+const A = process.env.PASSPORT_GITHUB_CALLBACK_URL;
+
+if (typeof A === "undefined") {
+  throw new Error("aaa");
+}
+
 import passport from "passport";
 import User from "./Models/User";
 import { FacebookStrategy } from "./Strategies/Facebook";

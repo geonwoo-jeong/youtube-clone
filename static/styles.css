@@ -429,6 +429,9 @@ input[type="submit"] {
   .social-login .social-login--facebook {
     background-color: #3a5998;
     color: white; }
+  .social-login .social-login--kakao {
+    background-color: #fef01b;
+    color: white; }
 
 .home-videos {
   display: grid;

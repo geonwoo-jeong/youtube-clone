@@ -6,6 +6,7 @@ interface IUser extends mongoose.Document {
   email: string;
   facebookId: number;
   githubId: number;
+  kakaoId: number;
   name: string;
 }
 
@@ -14,6 +15,7 @@ const userSchema: mongoose.PassportLocalSchema = new mongoose.Schema({
   email: String,
   facebookId: Number,
   githubId: Number,
+  kakaoId: Number,
   name: String
 });
 
