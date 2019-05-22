@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   changePassword,
-  editProfile,
+  getEditProfile,
   userDetail,
   users
 } from "../Controllers/userController";
@@ -10,7 +10,7 @@ import routes from "../routes";
 
 const userRouter = Router();
 
-userRouter.get(routes.editProfile, onlyPrivate, editProfile);
+userRouter.get(routes.editProfile, onlyPrivate, getEditProfile);
 userRouter.get(routes.changePassword, onlyPrivate, changePassword);
 userRouter.get(routes.userDetail(), userDetail);
 userRouter.get(routes.users, users);

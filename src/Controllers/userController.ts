@@ -63,7 +63,7 @@ export const userDetail = async (
     }
   }
 };
-export const editProfile = (req: Express.Request, res: Express.Response) =>
+export const getEditProfile = (req: Express.Request, res: Express.Response) =>
   res.render("EditProfile", { pageTitle: "Edit Profile" });
 
 export const changePassword = (req: Express.Request, res: Express.Response) =>

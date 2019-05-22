@@ -140,6 +140,13 @@ input {
   input:focus, input:active {
     outline: none; }
 
+.u-avatar {
+  height: 80px;
+  background-color: #ea232c;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%; }
+
 html,
 body {
   height: 100%; }
@@ -546,8 +553,7 @@ input[type="submit"] {
        -moz-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-bottom: 18px;
-    margin-bottom: 50px; }
+    margin-bottom: 18px; }
     .user-profile .user-profile__header .profile__username {
       font-size: 18px;
       margin-top: 15px; }
@@ -568,8 +574,7 @@ input[type="submit"] {
     -webkit-align-items: center;
        -moz-box-align: center;
         -ms-flex-align: center;
-            align-items: center;
-    margin-bottom: 50px; }
+            align-items: center; }
     .user-profile .user-profile__btns a:not(:last-child) {
       margin-bottom: 20px; }
 
