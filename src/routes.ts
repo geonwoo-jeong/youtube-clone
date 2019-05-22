@@ -29,6 +29,10 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const FACEBOOK = "/auth/facebook";
 const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 
+// Kakao
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
+
 const userDetail = (id?: string) => {
   if (id) {
     return `/users/${id}`;
@@ -72,6 +76,8 @@ const routes = {
   githubCallback: GITHUB_CALLBACK,
   home: HOME,
   join: JOIN,
+  kakao: KAKAO,
+  kakaoCallback: KAKAO_CALLBACK,
   login: LOGIN,
   logout: LOGOUT,
   search: SEARCH,

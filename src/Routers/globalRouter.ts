@@ -10,6 +10,7 @@ import { onlyPrivate, onlyPublic } from "../middlewares";
 import routes from "../routes";
 import { facebookAuth, facebookLogin } from "../Strategies/Facebook";
 import { githubAuth, githubLogin } from "../Strategies/Github";
+import { kakaoAuth, kakaoLogin } from "../Strategies/Kakao";
 import { localLogin } from "../Strategies/Local";
 
 const globalRouter = Router();
@@ -29,6 +30,10 @@ globalRouter.get(routes.githubCallback, githubAuth);
 // facebook login
 globalRouter.get(routes.facebook, onlyPublic, facebookLogin);
 globalRouter.get(routes.facebookCallback, facebookAuth);
+
+// kakao login
+globalRouter.get(routes.kakao, onlyPublic, kakaoLogin);
+globalRouter.get(routes.kakaoCallback, kakaoAuth);
 
 globalRouter.get(routes.home, home);
 globalRouter.get(routes.search, search);

@@ -215,6 +215,14 @@
     "@types/passport" "*"
     "@types/passport-oauth2" "*"
 
+"@types/passport-kakao@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@types/passport-kakao/-/passport-kakao-0.2.0.tgz#633d57eec9443b797d67fa18815212c0af2388d4"
+  integrity sha512-Lz9VO9TUluPDzAnv3GHFw5NLsTIR5NYZzJTIhghjFraYxawwZsruXUTAq7gU8F3ukMTw91CELS7T/9pfYCWqSA==
+  dependencies:
+    "@types/express" "*"
+    "@types/passport" "*"
+
 "@types/passport-local-mongoose@^4.0.12":
   version "4.0.12"
   resolved "https://registry.yarnpkg.com/@types/passport-local-mongoose/-/passport-local-mongoose-4.0.12.tgz#26d6a0af717d5b9a786417a000fbed91ef7b14f8"
@@ -4097,6 +4105,14 @@ passport-github2@^0.1.11:
   dependencies:
     passport-oauth2 "1.x.x"
 
+passport-kakao@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/passport-kakao/-/passport-kakao-0.0.5.tgz#dcaab68800793af95566a15e7fef2dcabd3adc2d"
+  integrity sha512-2Ts4SISbzTgkNWFwwvJFw2L5uxMJtI+4n0iuoDiQL5+3BBWdrTgdnWJLJtsa9blU5HjpNh/y/phMAAPxEKwZNw==
+  dependencies:
+    passport-oauth2 "~1.1.2"
+    pkginfo "~0.3.0"
+
 passport-local-mongoose@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/passport-local-mongoose/-/passport-local-mongoose-5.0.1.tgz#7b45ae6bcb6e8a7be26a4a95a7787e4d14130fc7"
@@ -4125,6 +4141,15 @@ passport-oauth2@1.x.x:
     passport-strategy "1.x.x"
     uid2 "0.0.x"
     utils-merge "1.x.x"
+
+passport-oauth2@~1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.1.2.tgz#bd7163b1b6090371868dc4ef6f9f2e1e4cc4b948"
+  integrity sha1-vXFjsbYJA3GGjcTvb58uHkzEuUg=
+  dependencies:
+    oauth "0.9.x"
+    passport-strategy "1.x.x"
+    uid2 "0.0.x"
 
 passport-strategy@1.x.x:
   version "1.0.0"
@@ -4249,6 +4274,11 @@ pkg-dir@^3.0.0:
   integrity sha512-/E57AYkoeQ25qkxMj5PBOVgF8Kiu/h7cYS30Z5+R7WaiCCBfLq58ZI/dSeaEKb9WVJV5n/03QwrN3IeWIFllvw==
   dependencies:
     find-up "^3.0.0"
+
+pkginfo@~0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.3.1.tgz#5b29f6a81f70717142e09e765bbeab97b4f81e21"
+  integrity sha1-Wyn2qB9wcXFC4J52W76rl7T4HiE=
 
 platform@1.3.5:
   version "1.3.5"
