@@ -46,6 +46,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
+    "localtunnel": "^1.9.1",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.18.11",
@@ -64,7 +65,8 @@
     "start": "cross-env NODE_ENV=development node --inspect=5858 -r ts-node/register ./src/init.ts",
     "start:watch": "nodemon",
     "build:dev": "cross-env WEBPACK_ENV=development TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -w",
-    "build": "tsc"
+    "build": "tsc",
+    "tunnel": "lt --port 4000"
   },
   "nodemonConfig": {
     "ignore": [

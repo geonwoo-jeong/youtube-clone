@@ -1,6 +1,6 @@
 import passport from "passport";
 import facebook from "passport-facebook";
-// import User from "../Models/User";
+import User from "../Models/User";
 import routes from "../routes";
 
 const callbackURL = process.env.PASSPORT_FACEBOOK_CALLBACK_URL;
@@ -27,7 +27,8 @@ const authenticateOptions: passport.AuthenticateOptions = {
 const facebookStrategyOptions: facebook.StrategyOption = {
   callbackURL,
   clientID,
-  clientSecret
+  clientSecret,
+  profileFields: ["id", "displayName", "photos", "email"]
 };
 
 const facebookLoginCallBack = async (
@@ -36,7 +37,28 @@ const facebookLoginCallBack = async (
   profile: any,
   callback: any
 ) => {
-  console.log(accessToken, refreshToken, profile, callback);
+  const {
+    _json: { id: facebookId, name, email }
+  } = profile;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      if (!user.facebookId) {
+        user.facebookId = facebookId;
+        user.save();
+      }
+      return callback(null, user);
+    }
+    const newUser = await User.create({
+      avatarUrl: `https://graph.facebook.com/${facebookId}/picture?type=large`,
+      email,
+      facebookId,
+      name
+    });
+    return callback(null, newUser);
+  } catch (error) {
+    return callback(error);
+  }
 };
 
 export const FacebookStrategy = new facebook.Strategy(
