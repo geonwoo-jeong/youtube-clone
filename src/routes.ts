@@ -33,6 +33,10 @@ const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 const KAKAO = "/auth/kakao";
 const KAKAO_CALLBACK = "/auth/kakao/callback";
 
+// Line
+const LINE = "/auth/line";
+const LINE_CALLBACK = "/auth/line/callback";
+
 const userDetail = (id?: string) => {
   if (id) {
     return `/users/${id}`;
@@ -78,6 +82,8 @@ const routes = {
   join: JOIN,
   kakao: KAKAO,
   kakaoCallback: KAKAO_CALLBACK,
+  line: LINE,
+  lineCallback: LINE_CALLBACK,
   login: LOGIN,
   logout: LOGOUT,
   search: SEARCH,

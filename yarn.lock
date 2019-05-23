@@ -4105,6 +4105,13 @@ passport-kakao@^0.0.5:
     passport-oauth2 "~1.1.2"
     pkginfo "~0.3.0"
 
+passport-line-auth@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/passport-line-auth/-/passport-line-auth-0.2.6.tgz#5376f3bef59cfe3fad8d114dcd1687f0e0182e2c"
+  integrity sha512-y9I2AZ9iH+ksgHUJImQPTA9e0IQGVTKhZG3FKO4kifk4oVul9duc4MzGIOitC4p4tyYPnH403PDavKPKzd9T/w==
+  dependencies:
+    passport-oauth2 "^1.5.0"
+
 passport-local-mongoose@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/passport-local-mongoose/-/passport-local-mongoose-5.0.1.tgz#7b45ae6bcb6e8a7be26a4a95a7787e4d14130fc7"
@@ -4123,7 +4130,7 @@ passport-local@^1.0.0:
   dependencies:
     passport-strategy "1.x.x"
 
-passport-oauth2@1.x.x:
+passport-oauth2@1.x.x, passport-oauth2@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.5.0.tgz#64babbb54ac46a4dcab35e7f266ed5294e3c4108"
   integrity sha512-kqBt6vR/5VlCK8iCx1/KpY42kQ+NEHZwsSyt4Y6STiNjU+wWICG1i8ucc1FapXDGO15C5O5VZz7+7vRzrDPXXQ==
