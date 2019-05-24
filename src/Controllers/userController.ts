@@ -3,6 +3,7 @@ import status from "http-status-codes";
 import User from "../Models/User";
 import routes from "../routes";
 
+// Join
 export const getJoin = (req: Express.Request, res: Express.Response) =>
   res.render("Join", { pageTitle: "Join" });
 
@@ -33,9 +34,11 @@ export const postJoin = async (
   }
 };
 
+// Login
 export const getLogin = (req: Express.Request, res: Express.Response) =>
   res.render("Login", { pageTitle: "Login" });
 
+// Logout
 export const logout = async (req: Express.Request, res: Express.Response) => {
   await req.logout();
   res.redirect(routes.home);
@@ -82,13 +85,35 @@ export const postEditProfile = async (
       email,
       name
     });
-    res.redirect("UserDetail");
+    res.redirect(routes.userDetail(req.user.id));
   } catch (error) {
-    console.log(error);
-    res.render("EditProfile", { pageTitle: "Edit Profile" });
+    res.redirect(routes.editProfile);
   }
 };
 
 // Change Password
-export const changePassword = (req: Express.Request, res: Express.Response) =>
-  res.render("ChangePassword", { pageTitle: "Change Password" });
+export const getChangePassword = (
+  req: Express.Request,
+  res: Express.Response
+) => res.render("ChangePassword", { pageTitle: "Change Password" });
+
+export const postChangePassword = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const {
+    body: { oldPassword, newPassword, newPassword1 }
+  } = req;
+  try {
+    if (newPassword !== newPassword1) {
+      res.status(status.BAD_REQUEST);
+      res.redirect(routes.users + routes.changePassword);
+      return;
+    }
+    await req.user.changePassword(oldPassword, newPassword);
+    res.redirect(routes.userDetail(req.user.id));
+  } catch (error) {
+    res.status(status.BAD_REQUEST);
+    res.redirect(routes.users + routes.changePassword);
+  }
+};

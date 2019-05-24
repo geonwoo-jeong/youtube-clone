@@ -1,5 +1,5 @@
-// @ts-ignore
 import passport from "passport";
+// @ts-ignore
 import line from "passport-line-auth";
 import routes from "../routes";
 import { checkUndefined } from "../Utils/checkUndefined";
