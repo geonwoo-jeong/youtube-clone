@@ -38,6 +38,10 @@ const VideoSchema = new mongoose.Schema({
   views: {
     default: 0,
     type: Number
+  },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   }
 });
 
