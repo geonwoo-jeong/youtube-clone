@@ -1,9 +1,29 @@
 import express from "express";
 import multer from "multer";
+import multerS3 from "multer-s3";
+import aws from "aws-sdk";
 import routes from "./routes";
 
-const multerVideo = multer({ dest: "../uploads/videos/" });
-const multerAvatar = multer({ dest: "../uploads/avatars/" });
+const s3 = new aws.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION
+});
+
+const multerVideo = multer({
+  storage: multerS3({
+    s3,
+    acl: "public-read",
+    bucket: process.env.AWS_VIDEO_BUCKET!
+  })
+});
+const multerAvatar = multer({
+  storage: multerS3({
+    s3,
+    acl: "public-read",
+    bucket: process.env.AWS_AVATAR_BUCKET!
+  })
+});
 
 export const localMiddlewares: express.RequestHandler = (req, res, next) => {
   res.locals.siteName = "YouTube-Clone";

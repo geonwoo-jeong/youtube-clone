@@ -34,13 +34,14 @@ export const postUpload = async (
   req: Express.Request,
   res: Express.Response
 ) => {
+  // Express.MulterS3.File
   const {
     body: { title, description },
-    file: { path: fileUrl }
+    file: { location }
   } = req;
   const newVideo = await Video.create({
     description,
-    fileUrl,
+    fileUrl: location,
     title,
     creator: req.user.id
   });
