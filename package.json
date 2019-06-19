@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.478.0",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "^1.4.3",
@@ -15,6 +16,7 @@
     "mongoose": "^5.5.4",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
+    "multer-s3": "^2.9.0",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
     "passport-github2": "^0.1.11",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@types/autoprefixer": "^9.5.0",
+    "@types/aws-sdk": "^2.7.0",
     "@types/body-parser": "^1.17.0",
     "@types/connect-mongo": "^0.0.42",
     "@types/cookie-parser": "^1.4.1",
@@ -37,6 +40,7 @@
     "@types/mongoose": "^5.5.1",
     "@types/morgan": "^1.7.35",
     "@types/multer": "^1.3.7",
+    "@types/multer-s3": "^2.7.6",
     "@types/node": "^12.0.0",
     "@types/passport": "^1.0.0",
     "@types/passport-facebook": "^2.1.9",
