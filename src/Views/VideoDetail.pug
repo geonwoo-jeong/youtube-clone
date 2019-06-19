@@ -14,8 +14,8 @@ block content
                 span.video__views 1 view
             else 
                 span.video__views #{video.views} views
-            div.vide__author
-                |Uploaded by
+            div.video__author
+                |Uploaded by 
                 a(href=routes.userDetail(video.creator.id))=video.creator.name                
         div.video__comments
             if video.comments.length === 1

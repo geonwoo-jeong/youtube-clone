@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
 
-interface IUser extends mongoose.Document {
+export interface IUser extends mongoose.Document {
   avatarUrl: string;
   email: string;
   facebookId: number;

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { IUser } from "./User";
 
 export interface IVideo extends mongoose.Document {
   comments: Comment[];
@@ -7,6 +8,7 @@ export interface IVideo extends mongoose.Document {
   description: string;
   video: string;
   createAt: Date;
+  creator: IUser;
 }
 
 const VideoSchema = new mongoose.Schema({
