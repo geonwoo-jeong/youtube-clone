@@ -28,7 +28,7 @@ const multerAvatar = multer({
 export const localMiddlewares: express.RequestHandler = (req, res, next) => {
   res.locals.siteName = "YouTube-Clone";
   res.locals.routes = routes;
-  res.locals.loggedUser = req.user || null;
+  res.locals.loggedUser = req.user || {};
   next();
 };
 

@@ -1,9 +1,11 @@
 extends Layouts/Main
+include Mixins/VideoPlayer
 
 block content
     div.video-detail__container
-        div.video__player
-            video(src=video.fileUrl)
+        +VideoPlayer({
+            src: video.fileUrl
+        })
         div.video__info
             if loggedUser && (video.creator.id === loggedUser.id)
                 a(href=routes.editVideo(video.id))
