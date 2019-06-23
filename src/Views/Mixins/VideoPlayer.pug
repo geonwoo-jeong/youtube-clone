@@ -1,5 +1,5 @@
 mixin VideoPlayer(video = {})
-    div.videoPlayer
+    div.videoPlayer#jsVideoPlayer
         video(src=video.src)
         div.videoPlayer__controls
             div.videoPlayer__column
@@ -8,7 +8,7 @@ mixin VideoPlayer(video = {})
                 span
                     |00:00 / 10:00
             div.videoPlayer__column
-                span
+                span#jsPlayButton
                     i.fas.fa-play
             div.videoPlayer__column
                 span
