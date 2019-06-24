@@ -1,3 +1,5 @@
+import getBlobDuration from "get-blob-duration";
+
 interface ExtendedDocument extends Document {
   msExitFullscreen?: () => void;
   mozCancelFullScreen?: () => void;
@@ -24,6 +26,18 @@ const volumeBtn: HTMLSpanElement | null = document.getElementById(
 const fullScreenBtn: HTMLSpanElement | null = document.getElementById(
   "jsFullScreen"
 );
+
+const setTotalTime = async () => {
+  if (videoPlayer) {
+    try {
+      const video = await fetch(videoPlayer.src);
+      const blob = await video.blob();
+      const duration = await getBlobDuration(blob);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
 
 const handlePlayClick = () => {
   if (videoPlayer && playBtn) {
