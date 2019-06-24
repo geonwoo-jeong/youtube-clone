@@ -4,7 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "aws-sdk": "^2.478.0",
+    "babel-loader": "^8.0.6",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "^1.4.3",

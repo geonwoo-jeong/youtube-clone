@@ -20,6 +20,14 @@ const config: webpack.Configuration = {
   mode: MODE as Mode,
   module: {
     rules: [
+      // {
+      //   test: /\.(js)$/,
+      //   use: [
+      //     {
+      //       loader: "babel-loader"
+      //     }
+      //   ]
+      // },
       {
         exclude: /node_modules/,
         test: /\.(ts)$/,

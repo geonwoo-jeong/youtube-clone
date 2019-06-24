@@ -14,21 +14,23 @@ const multerVideo = multer({
   storage: multerS3({
     s3,
     acl: "public-read",
-    bucket: process.env.AWS_VIDEO_BUCKET!
+    bucket: process.env.AWS_VIDEO_BUCKET!,
+    contentType: multerS3.AUTO_CONTENT_TYPE
   })
 });
 const multerAvatar = multer({
   storage: multerS3({
     s3,
     acl: "public-read",
-    bucket: process.env.AWS_AVATAR_BUCKET!
+    bucket: process.env.AWS_AVATAR_BUCKET!,
+    contentType: multerS3.AUTO_CONTENT_TYPE
   })
 });
 
 export const localMiddlewares: express.RequestHandler = (req, res, next) => {
   res.locals.siteName = "YouTube-Clone";
   res.locals.routes = routes;
-  res.locals.loggedUser = req.user || {};
+  res.locals.loggedUser = req.user || null;
   next();
 };
 

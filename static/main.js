@@ -108,6 +108,41 @@
 
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(/*! ../scss/styles.scss */ "./src/Assets/scss/styles.scss");
+__webpack_require__(/*! ./videoPlayer.ts */ "./src/Assets/ts/videoPlayer.ts");
+
+
+/***/ }),
+
+/***/ "./src/Assets/ts/videoPlayer.ts":
+/*!**************************************!*\
+  !*** ./src/Assets/ts/videoPlayer.ts ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+const videoContainer = document.getElementById("jsVideoPlayer");
+const videoPlayer = document.querySelector("#jsVideoPlayer video");
+const playBtn = document.getElementById("jsPlayButton");
+const handlePlayClick = () => {
+    if (videoPlayer) {
+        if (videoPlayer.paused) {
+            videoPlayer.play();
+        }
+        else {
+            videoPlayer.pause();
+        }
+    }
+};
+const init = () => {
+    if (playBtn) {
+        playBtn.addEventListener("click", handlePlayClick);
+    }
+};
+if (videoContainer) {
+    init();
+}
 
 
 /***/ })

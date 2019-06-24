@@ -1,2 +1,2 @@
 import "../scss/styles.scss";
-import "../videoPlayer";
+import "./videoPlayer.ts";
