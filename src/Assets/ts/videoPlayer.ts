@@ -1,3 +1,16 @@
+interface ExtendedDocument extends Document {
+  msExitFullscreen?: () => void;
+  mozCancelFullScreen?: () => void;
+  webkitExistFullScreen?: () => void;
+  msExistFullScreen?: () => void;
+}
+
+interface VideoContainer extends HTMLElement {
+  mozRequestFullScreen?: () => void;
+  webkitRequestFullScreen?: () => void;
+  msRequestFullScreen?: () => void;
+}
+
 const videoContainer: HTMLElement | null = document.getElementById(
   "jsVideoPlayer"
 );
@@ -37,19 +50,39 @@ const handleVolumeClick = () => {
 };
 
 const existFullScreen = () => {
-  if (document && fullScreenBtn) {
-    document.exitFullscreen();
+  const Document = <ExtendedDocument>document;
+
+  if (Document && fullScreenBtn) {
     fullScreenBtn.addEventListener("click", goFullScreen);
     fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+    if (Document.exitFullscreen) {
+      Document.exitFullscreen();
+    } else if (Document.mozCancelFullScreen) {
+      Document.mozCancelFullScreen();
+    } else if (Document.webkitExistFullScreen) {
+      Document.webkitExistFullScreen();
+    } else if (Document.msExistFullScreen) {
+      Document.msExistFullScreen();
+    }
   }
 };
 
 const goFullScreen = () => {
-  if (videoContainer && fullScreenBtn) {
-    videoContainer.requestFullscreen();
+  const VideoContainer = <VideoContainer>videoContainer;
+
+  if (VideoContainer && fullScreenBtn) {
     fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
     fullScreenBtn.removeEventListener("click", goFullScreen);
     fullScreenBtn.addEventListener("click", existFullScreen);
+    if (VideoContainer.requestFullscreen) {
+      VideoContainer.requestFullscreen();
+    } else if (VideoContainer.mozRequestFullScreen) {
+      VideoContainer.mozRequestFullScreen();
+    } else if (VideoContainer.webkitRequestFullScreen) {
+      VideoContainer.webkitRequestFullScreen();
+    } else if (VideoContainer.msRequestFullScreen) {
+      VideoContainer.msRequestFullScreen();
+    }
   }
 };
 
