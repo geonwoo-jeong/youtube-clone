@@ -20,18 +20,17 @@ const config: webpack.Configuration = {
   mode: MODE as Mode,
   module: {
     rules: [
-      // {
-      //   test: /\.(js)$/,
-      //   use: [
-      //     {
-      //       loader: "babel-loader"
-      //     }
-      //   ]
-      // },
       {
         exclude: /node_modules/,
         test: /\.(ts)$/,
-        use: "awesome-typescript-loader"
+        use: [
+          {
+            loader: "babel-loader"
+          },
+          {
+            loader: "awesome-typescript-loader"
+          }
+        ]
       },
       {
         test: /\.(scss)$/,
@@ -67,7 +66,7 @@ const config: webpack.Configuration = {
     })
   ],
   resolve: {
-    extensions: ["ts", "js"]
+    extensions: [".ts", ".js"]
   }
 };
 

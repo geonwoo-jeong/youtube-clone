@@ -26,17 +26,25 @@ const volumeBtn: HTMLSpanElement | null = document.getElementById(
 const fullScreenBtn: HTMLSpanElement | null = document.getElementById(
   "jsFullScreen"
 );
+const currentTime = document.getElementById("jsCurrentTime");
+const totalTime = document.getElementById("jsTotalTime");
 
-const setTotalTime = async () => {
-  if (videoPlayer) {
-    try {
-      const video = await fetch(videoPlayer.src);
-      const blob = await video.blob();
-      const duration = await getBlobDuration(blob);
-    } catch (error) {
-      console.log(error);
-    }
+const formatDate = (seconds: any) => {
+  const secondsNumber = parseInt(seconds, 10);
+  let hours: any = Math.floor(secondsNumber / 3600);
+  let minutes: any = Math.floor((secondsNumber - hours * 3600) / 60);
+  let totalSeconds: any = secondsNumber - hours * 3600 - minutes * 60;
+
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    totalSeconds = `0${totalSeconds}`;
+  }
+  return `${hours}:${minutes}:${totalSeconds}`;
 };
 
 const handlePlayClick = () => {
@@ -100,11 +108,33 @@ const goFullScreen = () => {
   }
 };
 
+const getCurrentTime = () => {
+  if (videoPlayer && currentTime) {
+    currentTime.innerHTML = formatDate(videoPlayer.currentTime);
+  }
+};
+
+const setTotalTime = async () => {
+  if (videoPlayer && totalTime) {
+    try {
+      const video = await fetch(videoPlayer.src);
+      const blob = await video.blob();
+      const duration = await getBlobDuration(blob);
+      const totalTimeString = formatDate(duration);
+      totalTime.innerHTML = totalTimeString;
+      setInterval(getCurrentTime, 1000);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
 const init = () => {
-  if (playBtn && volumeBtn && fullScreenBtn) {
+  if (videoPlayer && playBtn && volumeBtn && fullScreenBtn) {
     playBtn.addEventListener("click", handlePlayClick);
     volumeBtn.addEventListener("click", handleVolumeClick);
     fullScreenBtn.addEventListener("click", goFullScreen);
+    videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   }
 };
 

@@ -13,6 +13,7 @@ import { localMiddlewares } from "./middlewares";
 import { globalRouter, userRouter, videoRouter } from "./Routers";
 import routes from "./routes";
 import "./passport";
+import cors from "cors";
 
 const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
@@ -35,6 +36,7 @@ const expressSessionOptions: expressSession.SessionOptions = {
 
 const app: express.Application = express();
 
+app.use(cors());
 app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "Views"));
