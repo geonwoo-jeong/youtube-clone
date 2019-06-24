@@ -8,6 +8,9 @@ const playBtn: HTMLSpanElement | null = document.getElementById("jsPlayButton");
 const volumeBtn: HTMLSpanElement | null = document.getElementById(
   "jsVolumeButton"
 );
+const fullScreenBtn: HTMLSpanElement | null = document.getElementById(
+  "jsFullScreen"
+);
 
 const handlePlayClick = () => {
   if (videoPlayer && playBtn) {
@@ -33,10 +36,28 @@ const handleVolumeClick = () => {
   }
 };
 
+const existFullScreen = () => {
+  if (document && fullScreenBtn) {
+    document.exitFullscreen();
+    fullScreenBtn.addEventListener("click", goFullScreen);
+    fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+  }
+};
+
+const goFullScreen = () => {
+  if (videoContainer && fullScreenBtn) {
+    videoContainer.requestFullscreen();
+    fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+    fullScreenBtn.removeEventListener("click", goFullScreen);
+    fullScreenBtn.addEventListener("click", existFullScreen);
+  }
+};
+
 const init = () => {
-  if (playBtn && volumeBtn) {
+  if (playBtn && volumeBtn && fullScreenBtn) {
     playBtn.addEventListener("click", handlePlayClick);
     volumeBtn.addEventListener("click", handleVolumeClick);
+    fullScreenBtn.addEventListener("click", goFullScreen);
   }
 };
 
