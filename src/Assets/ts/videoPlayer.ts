@@ -13,21 +13,16 @@ interface VideoContainer extends HTMLElement {
   msRequestFullScreen?: () => void;
 }
 
-const videoContainer: HTMLElement | null = document.getElementById(
-  "jsVideoPlayer"
+const videoContainer = <HTMLElement>document.getElementById("jsVideoPlayer");
+const videoPlayer = <HTMLVideoElement>(
+  document.querySelector("#jsVideoPlayer video")
 );
-const videoPlayer: HTMLVideoElement | null = document.querySelector(
-  "#jsVideoPlayer video"
-);
-const playBtn: HTMLSpanElement | null = document.getElementById("jsPlayButton");
-const volumeBtn: HTMLSpanElement | null = document.getElementById(
-  "jsVolumeButton"
-);
-const fullScreenBtn: HTMLSpanElement | null = document.getElementById(
-  "jsFullScreen"
-);
-const currentTime = document.getElementById("jsCurrentTime");
-const totalTime = document.getElementById("jsTotalTime");
+const playBtn = <HTMLSpanElement>document.getElementById("jsPlayButton");
+const volumeBtn = <HTMLSpanElement>document.getElementById("jsVolumeButton");
+const fullScreenBtn = <HTMLSpanElement>document.getElementById("jsFullScreen");
+const currentTime = <HTMLSpanElement>document.getElementById("jsCurrentTime");
+const totalTime = <HTMLSpanElement>document.getElementById("jsTotalTime");
+const volumeRange = <HTMLInputElement>document.getElementById("jsVolume");
 
 const formatDate = (seconds: any) => {
   const secondsNumber = parseInt(seconds, 10);
@@ -48,94 +43,104 @@ const formatDate = (seconds: any) => {
 };
 
 const handlePlayClick = () => {
-  if (videoPlayer && playBtn) {
-    if (videoPlayer.paused) {
-      videoPlayer.play();
-      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    } else {
-      videoPlayer.pause();
-      playBtn.innerHTML = '<i class="fas fa-play"></i>';
-    }
+  if (videoPlayer.paused) {
+    videoPlayer.play();
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  } else {
+    videoPlayer.pause();
+    playBtn.innerHTML = '<i class="fas fa-play"></i>';
   }
 };
 
 const handleVolumeClick = () => {
-  if (videoPlayer && volumeBtn) {
-    if (videoPlayer.muted) {
-      videoPlayer.muted = false;
-      volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-    } else {
-      videoPlayer.muted = true;
-      volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-    }
+  if (videoPlayer.muted) {
+    videoPlayer.muted = false;
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    volumeRange.value = String(videoPlayer.volume);
+  } else {
+    volumeRange.value = "0";
+    videoPlayer.muted = true;
+    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
   }
 };
 
 const existFullScreen = () => {
   const Document = <ExtendedDocument>document;
 
-  if (Document && fullScreenBtn) {
-    fullScreenBtn.addEventListener("click", goFullScreen);
-    fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-    if (Document.exitFullscreen) {
-      Document.exitFullscreen();
-    } else if (Document.mozCancelFullScreen) {
-      Document.mozCancelFullScreen();
-    } else if (Document.webkitExistFullScreen) {
-      Document.webkitExistFullScreen();
-    } else if (Document.msExistFullScreen) {
-      Document.msExistFullScreen();
-    }
+  fullScreenBtn.addEventListener("click", goFullScreen);
+  fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+  if (Document.exitFullscreen) {
+    Document.exitFullscreen();
+  } else if (Document.mozCancelFullScreen) {
+    Document.mozCancelFullScreen();
+  } else if (Document.webkitExistFullScreen) {
+    Document.webkitExistFullScreen();
+  } else if (Document.msExistFullScreen) {
+    Document.msExistFullScreen();
   }
 };
 
 const goFullScreen = () => {
   const VideoContainer = <VideoContainer>videoContainer;
 
-  if (VideoContainer && fullScreenBtn) {
-    fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
-    fullScreenBtn.removeEventListener("click", goFullScreen);
-    fullScreenBtn.addEventListener("click", existFullScreen);
-    if (VideoContainer.requestFullscreen) {
-      VideoContainer.requestFullscreen();
-    } else if (VideoContainer.mozRequestFullScreen) {
-      VideoContainer.mozRequestFullScreen();
-    } else if (VideoContainer.webkitRequestFullScreen) {
-      VideoContainer.webkitRequestFullScreen();
-    } else if (VideoContainer.msRequestFullScreen) {
-      VideoContainer.msRequestFullScreen();
-    }
+  fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+  fullScreenBtn.removeEventListener("click", goFullScreen);
+  fullScreenBtn.addEventListener("click", existFullScreen);
+  if (VideoContainer.requestFullscreen) {
+    VideoContainer.requestFullscreen();
+  } else if (VideoContainer.mozRequestFullScreen) {
+    VideoContainer.mozRequestFullScreen();
+  } else if (VideoContainer.webkitRequestFullScreen) {
+    VideoContainer.webkitRequestFullScreen();
+  } else if (VideoContainer.msRequestFullScreen) {
+    VideoContainer.msRequestFullScreen();
   }
 };
 
 const getCurrentTime = () => {
-  if (videoPlayer && currentTime) {
-    currentTime.innerHTML = formatDate(videoPlayer.currentTime);
-  }
+  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 };
 
 const setTotalTime = async () => {
-  if (videoPlayer && totalTime) {
-    try {
-      const video = await fetch(videoPlayer.src);
-      const blob = await video.blob();
-      const duration = await getBlobDuration(blob);
-      const totalTimeString = formatDate(duration);
-      totalTime.innerHTML = totalTimeString;
-      setInterval(getCurrentTime, 1000);
-    } catch (error) {
-      console.log(error);
-    }
+  try {
+    const video = await fetch(videoPlayer.src);
+    const blob = await video.blob();
+    const duration = await getBlobDuration(blob);
+    const totalTimeString = formatDate(duration);
+    totalTime.innerHTML = totalTimeString;
+    setInterval(getCurrentTime, 1000);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const handleEnded = () => {
+  videoPlayer.currentTime = 0;
+  playBtn.innerHTML = '<i class="fas fa-play"></i>';
+};
+
+const handleDrag = (event: any): void => {
+  const {
+    target: { value }
+  } = event;
+  videoPlayer.volume = value;
+  if (value >= 0.6) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+  } else if (value >= 0.2) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+  } else {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
   }
 };
 
 const init = () => {
-  if (videoPlayer && playBtn && volumeBtn && fullScreenBtn) {
-    playBtn.addEventListener("click", handlePlayClick);
-    volumeBtn.addEventListener("click", handleVolumeClick);
-    fullScreenBtn.addEventListener("click", goFullScreen);
-    videoPlayer.addEventListener("loadedmetadata", setTotalTime);
-  }
+  videoPlayer.volume = 0.5;
+  playBtn.addEventListener("click", handlePlayClick);
+  volumeBtn.addEventListener("click", handleVolumeClick);
+  fullScreenBtn.addEventListener("click", goFullScreen);
+  videoPlayer.addEventListener("", setTotalTime);
+  videoPlayer.addEventListener("ended", handleEnded);
+  volumeRange.addEventListener("input", handleDrag);
 };
 
 if (videoContainer) {
