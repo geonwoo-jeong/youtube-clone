@@ -129,7 +129,7 @@ export const postRegisterView = async (
   } = req;
   try {
     const video = await Video.findById(id);
-    if (video && video.views) {
+    if (video) {
       video.views += 1;
       video.save();
       res.status(200);

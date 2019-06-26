@@ -4,6 +4,6 @@ import routes from "../routes";
 
 const apiRouter = Router();
 
-apiRouter.get(routes.registerView, postRegisterView);
+apiRouter.post(routes.registerView, postRegisterView);
 
 export default apiRouter;
