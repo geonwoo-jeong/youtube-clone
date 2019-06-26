@@ -1,4 +1,5 @@
 import Express from "express";
+import Comment from "../Models/Comment";
 import Video, { IVideo } from "../Models/Video";
 import routes from "../routes";
 
@@ -58,7 +59,9 @@ export const videoDetail = async (
     params: { id }
   } = req;
   try {
-    const video = await Video.findById(id).populate("creator");
+    const video = await Video.findById(id)
+      .populate("creator")
+      .populate("comments");
     res.render("VideoDetail", { pageTitle: "Video Detail", video });
   } catch (error) {
     res.redirect(routes.home);
@@ -123,7 +126,7 @@ export const deleteVideo = async (
 export const postRegisterView = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   const {
     params: { id }
   } = req;
@@ -133,6 +136,32 @@ export const postRegisterView = async (
       video.views += 1;
       video.save();
       res.status(200);
+    }
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postAddComment = async (
+  req: Express.Request,
+  res: Express.Response
+): Promise<void> => {
+  const {
+    params: { id },
+    body: { comment },
+    user
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    if (video) {
+      const newComment = await Comment.create({
+        creator: user.id,
+        text: comment
+      });
+      video.comments.push(newComment.id);
+      video.save();
     }
   } catch (error) {
     res.status(400);

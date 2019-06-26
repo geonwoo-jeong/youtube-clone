@@ -10,13 +10,13 @@ const CommentSchema = new mongoose.Schema({
     default: Date.now,
     type: Date
   },
+  creator: {
+    ref: "User",
+    type: mongoose.Schema.Types.ObjectId
+  },
   text: {
     required: "Text is required",
     type: String
-  },
-  creator: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
   }
 });
 

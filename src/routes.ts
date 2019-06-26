@@ -40,6 +40,7 @@ const LINE_CALLBACK = "/auth/line/callback";
 // API
 const API = "/api";
 const REGISTER_VIEW = "/:id/view";
+const ADD_COMMENT = "/:id/comment";
 
 const userDetail = (id?: string) => {
   if (id) {
@@ -74,6 +75,7 @@ const deleteVideo = (id?: string) => {
 };
 
 const routes = {
+  addComment: ADD_COMMENT,
   api: API,
   changePassword: CHANGE_PASSWORD,
   deleteVideo,
