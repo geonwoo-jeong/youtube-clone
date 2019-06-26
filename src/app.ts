@@ -14,6 +14,7 @@ import { globalRouter, userRouter, videoRouter } from "./Routers";
 import routes from "./routes";
 import "./passport";
 import cors from "cors";
+import apiRouter from "./Routers/apiRouter";
 
 const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
@@ -54,5 +55,6 @@ app.use(localMiddlewares);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
+app.use(routes.api, apiRouter);
 
 export default app;

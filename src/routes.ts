@@ -37,6 +37,10 @@ const KAKAO_CALLBACK = "/auth/kakao/callback";
 const LINE = "/auth/line";
 const LINE_CALLBACK = "/auth/line/callback";
 
+// API
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+
 const userDetail = (id?: string) => {
   if (id) {
     return `/users/${id}`;
@@ -70,6 +74,7 @@ const deleteVideo = (id?: string) => {
 };
 
 const routes = {
+  api: API,
   changePassword: CHANGE_PASSWORD,
   deleteVideo,
   editProfile: EDIT_PROFILE,
@@ -86,6 +91,7 @@ const routes = {
   lineCallback: LINE_CALLBACK,
   login: LOGIN,
   logout: LOGOUT,
+  registerView: REGISTER_VIEW,
   search: SEARCH,
   upload: UPLOAD,
   uploads: UPLOADS,
