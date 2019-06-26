@@ -22,6 +22,10 @@ const VideoSchema = new mongoose.Schema({
     default: Date.now,
     type: Date
   },
+  creator: {
+    ref: "User",
+    type: mongoose.Schema.Types.ObjectId
+  },
   description: String,
   fileUrl: {
     required: "File URL is required",
@@ -40,10 +44,6 @@ const VideoSchema = new mongoose.Schema({
   views: {
     default: 0,
     type: Number
-  },
-  creator: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
   }
 });
 

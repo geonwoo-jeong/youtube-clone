@@ -40,10 +40,10 @@ export const postUpload = async (
     file: { location }
   }: { body: any; file: any } = req;
   const newVideo = await Video.create({
+    creator: req.user.id,
     description,
     fileUrl: location,
-    title,
-    creator: req.user.id
+    title
   });
   req.user.videos.push(newVideo.id);
   req.user.save();

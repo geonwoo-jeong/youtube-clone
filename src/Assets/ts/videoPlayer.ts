@@ -1,28 +1,30 @@
 import getBlobDuration from "get-blob-duration";
 
-interface ExtendedDocument extends Document {
+interface IExtendedDocument extends Document {
   msExitFullscreen?: () => void;
   mozCancelFullScreen?: () => void;
   webkitExistFullScreen?: () => void;
   msExistFullScreen?: () => void;
 }
 
-interface VideoContainer extends HTMLElement {
+interface IVideoContainer extends HTMLElement {
   mozRequestFullScreen?: () => void;
   webkitRequestFullScreen?: () => void;
   msRequestFullScreen?: () => void;
 }
 
-const videoContainer = <HTMLElement>document.getElementById("jsVideoPlayer");
-const videoPlayer = <HTMLVideoElement>(
-  document.querySelector("#jsVideoPlayer video")
-);
-const playBtn = <HTMLSpanElement>document.getElementById("jsPlayButton");
-const volumeBtn = <HTMLSpanElement>document.getElementById("jsVolumeButton");
-const fullScreenBtn = <HTMLSpanElement>document.getElementById("jsFullScreen");
-const currentTime = <HTMLSpanElement>document.getElementById("jsCurrentTime");
-const totalTime = <HTMLSpanElement>document.getElementById("jsTotalTime");
-const volumeRange = <HTMLInputElement>document.getElementById("jsVolume");
+const videoContainer = document.getElementById("jsVideoPlayer") as HTMLElement;
+const videoPlayer = document.querySelector(
+  "#jsVideoPlayer video"
+) as HTMLVideoElement;
+const playBtn = document.getElementById("jsPlayButton") as HTMLSpanElement;
+const volumeBtn = document.getElementById("jsVolumeButton") as HTMLSpanElement;
+const fullScreenBtn = document.getElementById(
+  "jsFullScreen"
+) as HTMLSpanElement;
+const currentTime = document.getElementById("jsCurrentTime") as HTMLSpanElement;
+const totalTime = document.getElementById("jsTotalTime") as HTMLSpanElement;
+const volumeRange = document.getElementById("jsVolume") as HTMLInputElement;
 
 const formatDate = (seconds: any) => {
   const secondsNumber = parseInt(seconds, 10);
@@ -65,7 +67,7 @@ const handleVolumeClick = () => {
 };
 
 const existFullScreen = () => {
-  const Document = <ExtendedDocument>document;
+  const Document = document as IExtendedDocument;
 
   fullScreenBtn.addEventListener("click", goFullScreen);
   fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
@@ -81,7 +83,7 @@ const existFullScreen = () => {
 };
 
 const goFullScreen = () => {
-  const VideoContainer = <VideoContainer>videoContainer;
+  const VideoContainer = videoContainer as IVideoContainer;
 
   fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
   fullScreenBtn.removeEventListener("click", goFullScreen);
@@ -138,7 +140,7 @@ const init = () => {
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScreenBtn.addEventListener("click", goFullScreen);
-  videoPlayer.addEventListener("", setTotalTime);
+  videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
 };
