@@ -33,11 +33,11 @@ const registerView = (): void => {
   });
 };
 
-const formatDate = (seconds: any) => {
-  const secondsNumber = parseInt(seconds, 10);
-  let hours: any = Math.floor(secondsNumber / 3600);
-  let minutes: any = Math.floor((secondsNumber - hours * 3600) / 60);
-  let totalSeconds: any = secondsNumber - hours * 3600 - minutes * 60;
+const formatDate = (seconds: any): string => {
+  const secondsNumber: string | number = parseInt(seconds, 10);
+  let hours: string | number = Math.floor(secondsNumber / 3600);
+  let minutes: string | number = Math.floor((secondsNumber - hours * 3600) / 60);
+  let totalSeconds: string | number = secondsNumber - hours * 3600 - minutes * 60;
 
   if (hours < 10) {
     hours = `0${hours}`;
@@ -51,7 +51,7 @@ const formatDate = (seconds: any) => {
   return `${hours}:${minutes}:${totalSeconds}`;
 };
 
-const handlePlayClick = () => {
+const handlePlayClick = (): void => {
   if (videoPlayer.paused) {
     videoPlayer.play();
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
@@ -61,7 +61,7 @@ const handlePlayClick = () => {
   }
 };
 
-const handleVolumeClick = () => {
+const handleVolumeClick = (): void => {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
     volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
@@ -73,7 +73,7 @@ const handleVolumeClick = () => {
   }
 };
 
-const existFullScreen = () => {
+const existFullScreen = (): void => {
   const Document = document as IExtendedDocument;
 
   fullScreenBtn.addEventListener("click", goFullScreen);
@@ -89,7 +89,7 @@ const existFullScreen = () => {
   }
 };
 
-const goFullScreen = () => {
+const goFullScreen = (): void => {
   const VideoContainer = videoContainer as IVideoContainer;
 
   fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
@@ -106,11 +106,11 @@ const goFullScreen = () => {
   }
 };
 
-const getCurrentTime = () => {
+const getCurrentTime = (): void => {
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 };
 
-const setTotalTime = async () => {
+const setTotalTime = async (): Promise<void> => {
   try {
     const video = await fetch(videoPlayer.src);
     const blob = await video.blob();
@@ -123,7 +123,7 @@ const setTotalTime = async () => {
   }
 };
 
-const handleEnded = () => {
+const handleEnded = (): void => {
   registerView();
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
@@ -143,7 +143,7 @@ const handleDrag = (event: any): void => {
   }
 };
 
-const init = () => {
+const init = (): void => {
   videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);

@@ -12,17 +12,17 @@ export interface IUser extends mongoose.Document {
 
 const userSchema: mongoose.PassportLocalSchema = new mongoose.Schema({
   avatarUrl: String,
-  email: String,
-  facebookId: Number,
-  githubId: Number,
-  kakaoId: Number,
-  name: String,
   comments: [
     {
       ref: "Comment",
       type: mongoose.Schema.Types.ObjectId
     }
   ],
+  email: String,
+  facebookId: Number,
+  githubId: Number,
+  kakaoId: Number,
+  name: String,
   videos: [
     {
       ref: "Video",

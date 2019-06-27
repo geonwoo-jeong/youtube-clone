@@ -1,48 +1,48 @@
 // Global
-const HOME = "/";
-const JOIN = "/join";
-const LOGIN = "/login";
-const LOGOUT = "/logout";
-const SEARCH = "/search";
+const HOME: string = "/";
+const JOIN: string = "/join";
+const LOGIN: string = "/login";
+const LOGOUT: string = "/logout";
+const SEARCH: string = "/search";
 
 // Users
-const USERS = "/users";
-const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/edit-profile";
-const CHANGE_PASSWORD = "/change-password";
+const USERS: string = "/users";
+const USER_DETAIL: string = "/:id";
+const EDIT_PROFILE: string = "/edit-profile";
+const CHANGE_PASSWORD: string = "/change-password";
 
 // Videos
-const VIDEOS = "/videos";
-const UPLOAD = "/upload";
-const VIDEO_DETAIL = "/:id";
-const EDIT_VIDEO = "/:id/edit";
-const DELETE_VIDEO = "/:id/delete";
+const VIDEOS: string = "/videos";
+const UPLOAD: string = "/upload";
+const VIDEO_DETAIL: string = "/:id";
+const EDIT_VIDEO: string = "/:id/edit";
+const DELETE_VIDEO: string = "/:id/delete";
 
 // Uploads
-const UPLOADS = "/uploads";
+const UPLOADS: string = "/uploads";
 
 // Github
-const GITHUB = "/auth/github";
-const GITHUB_CALLBACK = "/auth/github/callback";
+const GITHUB: string = "/auth/github";
+const GITHUB_CALLBACK: string = "/auth/github/callback";
 
 // Facebook
-const FACEBOOK = "/auth/facebook";
-const FACEBOOK_CALLBACK = "/auth/facebook/callback";
+const FACEBOOK: string = "/auth/facebook";
+const FACEBOOK_CALLBACK: string = "/auth/facebook/callback";
 
 // Kakao
-const KAKAO = "/auth/kakao";
-const KAKAO_CALLBACK = "/auth/kakao/callback";
+const KAKAO: string = "/auth/kakao";
+const KAKAO_CALLBACK: string = "/auth/kakao/callback";
 
 // Line
-const LINE = "/auth/line";
-const LINE_CALLBACK = "/auth/line/callback";
+const LINE: string = "/auth/line";
+const LINE_CALLBACK: string = "/auth/line/callback";
 
 // API
-const API = "/api";
-const REGISTER_VIEW = "/:id/view";
-const ADD_COMMENT = "/:id/comment";
+const API: string = "/api";
+const REGISTER_VIEW: string = "/:id/view";
+const ADD_COMMENT: string = "/:id/comment";
 
-const userDetail = (id?: string) => {
+const userDetail = (id?: string): string => {
   if (id) {
     return `/users/${id}`;
   } else {
@@ -50,7 +50,7 @@ const userDetail = (id?: string) => {
   }
 };
 
-const videoDetail = (id?: string) => {
+const videoDetail = (id?: string): string => {
   if (id) {
     return `/videos/${id}`;
   } else {
@@ -58,7 +58,7 @@ const videoDetail = (id?: string) => {
   }
 };
 
-const editVideo = (id?: string) => {
+const editVideo = (id?: string) : string => {
   if (id) {
     return `/videos/${id}/edit`;
   } else {
@@ -66,7 +66,7 @@ const editVideo = (id?: string) => {
   }
 };
 
-const deleteVideo = (id?: string) => {
+const deleteVideo = (id?: string) : string => {
   if (id) {
     return `/videos/${id}/delete`;
   } else {

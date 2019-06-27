@@ -3,7 +3,10 @@ import Comment from "../Models/Comment";
 import Video, { IVideo } from "../Models/Video";
 import routes from "../routes";
 
-export const home = async (req: Express.Request, res: Express.Response) => {
+export const home = async (
+  req: Express.Request,
+  res: Express.Response
+): Promise<void> => {
   try {
     const videos = await Video.find({}).sort({ _id: -1 });
     res.render("Home", { pageTitle: "Home", videos });
@@ -12,7 +15,10 @@ export const home = async (req: Express.Request, res: Express.Response) => {
     res.render("Home", { pageTitle: "Home", videos: [] });
   }
 };
-export const search = async (req: Express.Request, res: Express.Response) => {
+export const search = async (
+  req: Express.Request,
+  res: Express.Response
+): Promise<void> => {
   const {
     query: { term }
   } = req;
@@ -25,16 +31,16 @@ export const search = async (req: Express.Request, res: Express.Response) => {
   res.render("Search", { pageTitle: "Search", term, videos });
 };
 
-export const videos = (req: Express.Request, res: Express.Response) =>
+export const videos = (req: Express.Request, res: Express.Response): void =>
   res.render("Videos", { pageTitle: "Videos" });
 
-export const getUpload = (req: Express.Request, res: Express.Response) =>
+export const getUpload = (req: Express.Request, res: Express.Response): void =>
   res.render("Upload", { pageTitle: "Upload" });
 
 export const postUpload = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   // Express.MulterS3.File
   const {
     body: { title, description },
@@ -54,7 +60,7 @@ export const postUpload = async (
 export const videoDetail = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   const {
     params: { id }
   } = req;
@@ -71,7 +77,7 @@ export const videoDetail = async (
 export const getEditVideo = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   try {
     const {
       params: { id }
@@ -89,7 +95,7 @@ export const getEditVideo = async (
 export const postEditVideo = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   try {
     const {
       params: { id },
@@ -105,7 +111,7 @@ export const postEditVideo = async (
 export const deleteVideo = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   const {
     params: { id }
   } = req;

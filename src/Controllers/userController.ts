@@ -4,14 +4,14 @@ import User from "../Models/User";
 import routes from "../routes";
 
 // Join
-export const getJoin = (req: Express.Request, res: Express.Response) =>
+export const getJoin = (req: Express.Request, res: Express.Response): void =>
   res.render("Join", { pageTitle: "Join" });
 
 export const postJoin = async (
   req: Express.Request,
   res: Express.Response,
   next: Express.NextFunction
-) => {
+): Promise<void> => {
   const {
     body: { name, email, password, password2 }
   } = req;
@@ -35,22 +35,25 @@ export const postJoin = async (
 };
 
 // Login
-export const getLogin = (req: Express.Request, res: Express.Response) =>
+export const getLogin = (req: Express.Request, res: Express.Response): void =>
   res.render("Login", { pageTitle: "Login" });
 
 // Logout
-export const logout = async (req: Express.Request, res: Express.Response) => {
+export const logout = async (
+  req: Express.Request,
+  res: Express.Response
+): Promise<void> => {
   await req.logout();
   res.redirect(routes.home);
 };
 
-export const users = (req: Express.Request, res: Express.Response) =>
+export const users = (req: Express.Request, res: Express.Response): void =>
   res.render("Users", { pageTitle: "Users" });
 
 export const userDetail = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   if (req.user && req.user._id) {
     const { user } = req;
     res.render("UserDetail", { pageTitle: "User Detail", user });
@@ -68,17 +71,19 @@ export const userDetail = async (
 };
 
 // Edit Profile
-export const getEditProfile = (req: Express.Request, res: Express.Response) =>
-  res.render("EditProfile", { pageTitle: "Edit Profile" });
+export const getEditProfile = (
+  req: Express.Request,
+  res: Express.Response
+): void => res.render("EditProfile", { pageTitle: "Edit Profile" });
 
 export const postEditProfile = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   const {
     body: { name, email },
     file
-  } : { body: any, file : any }= req;
+  }: { body: any; file: any } = req;
   try {
     await User.findByIdAndUpdate(req.user.id, {
       avatarUrl: file ? file.location : req.user.avatarUrl,
@@ -95,12 +100,12 @@ export const postEditProfile = async (
 export const getChangePassword = (
   req: Express.Request,
   res: Express.Response
-) => res.render("ChangePassword", { pageTitle: "Change Password" });
+): void => res.render("ChangePassword", { pageTitle: "Change Password" });
 
 export const postChangePassword = async (
   req: Express.Request,
   res: Express.Response
-) => {
+): Promise<void> => {
   const {
     body: { oldPassword, newPassword, newPassword1 }
   } = req;

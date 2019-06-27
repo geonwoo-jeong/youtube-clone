@@ -5,7 +5,7 @@ interface IComment extends mongoose.Document {
   createAt: Date;
 }
 
-const CommentSchema = new mongoose.Schema({
+const CommentSchema: mongoose.Schema<IComment> = new mongoose.Schema({
   createdAt: {
     default: Date.now,
     type: Date

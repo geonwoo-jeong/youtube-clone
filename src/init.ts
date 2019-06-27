@@ -10,7 +10,7 @@ if (typeof PORT === "undefined") {
   throw new Error("PORT is undefined");
 }
 
-const handleListening = () => {
+const handleListening = () : void => {
   console.log(`Listening on: http://localhost://${PORT}`);
 };
 

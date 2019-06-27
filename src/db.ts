@@ -15,9 +15,9 @@ mongoose.connect(MONGO_URL, connectionOptions);
 
 const db = mongoose.connection;
 
-const handleOpen = () => console.log("✅ Connect to DB");
+const handleOpen = (): void => console.log("✅ Connect to DB");
 
-const handleError: mongoose.HookErrorCallback = (error: any) =>
+const handleError: mongoose.HookErrorCallback = (error: any) : void =>
   console.log(`❌ Error on DB Connection : ${error}`);
 
 db.once("open", handleOpen);

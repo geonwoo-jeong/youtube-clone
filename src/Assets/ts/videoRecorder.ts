@@ -10,7 +10,6 @@ let streamObject: MediaStream;
 let videoRecorder: MediaRecorder;
 
 const handleVideoData = (event: any): void => {
-  console.log("handle Video Data");
   const { data: videoFile } = event;
   const link = document.createElement("a");
   link.href = URL.createObjectURL(videoFile);
@@ -20,7 +19,6 @@ const handleVideoData = (event: any): void => {
 };
 
 const stopRecording = (): void => {
-  console.log("stop Recording");
   videoRecorder.stop();
   recordBtn.removeEventListener("click", stopRecording);
   recordBtn.addEventListener("click", getVideo);

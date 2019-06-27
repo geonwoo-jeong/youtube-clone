@@ -12,7 +12,7 @@ export interface IVideo extends mongoose.Document {
   views: number;
 }
 
-const VideoSchema = new mongoose.Schema({
+const VideoSchema: mongoose.Schema<IVideo> = new mongoose.Schema({
   comments: [
     {
       ref: "Comment",
