@@ -51,10 +51,10 @@ const getVideo = async (): Promise<void> => {
   }
 };
 
-const init = (): void => {
+const videoRecorderInit = (): void => {
   recordBtn.addEventListener("click", getVideo);
 };
 
 if (recorderContainer) {
-  init();
+  videoRecorderInit();
 }

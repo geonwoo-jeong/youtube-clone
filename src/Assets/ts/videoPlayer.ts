@@ -36,8 +36,11 @@ const registerView = (): void => {
 const formatDate = (seconds: any): string => {
   const secondsNumber: string | number = parseInt(seconds, 10);
   let hours: string | number = Math.floor(secondsNumber / 3600);
-  let minutes: string | number = Math.floor((secondsNumber - hours * 3600) / 60);
-  let totalSeconds: string | number = secondsNumber - hours * 3600 - minutes * 60;
+  let minutes: string | number = Math.floor(
+    (secondsNumber - hours * 3600) / 60
+  );
+  let totalSeconds: string | number =
+    secondsNumber - hours * 3600 - minutes * 60;
 
   if (hours < 10) {
     hours = `0${hours}`;
@@ -143,7 +146,7 @@ const handleDrag = (event: any): void => {
   }
 };
 
-const init = (): void => {
+const videoPlayerInit = (): void => {
   videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
@@ -154,5 +157,5 @@ const init = (): void => {
 };
 
 if (videoContainer) {
-  init();
+  videoPlayerInit();
 }
