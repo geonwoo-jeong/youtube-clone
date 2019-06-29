@@ -3,6 +3,25 @@ import axios from "axios";
 const addCommentForm = document.getElementById(
   "jsAddComment"
 ) as HTMLFormElement;
+const commentList = document.getElementById(
+  "jsCommentList"
+) as HTMLUListElement;
+const commentNumber = document.getElementById(
+  "jsCommentNumber"
+) as HTMLSpanElement;
+
+const increaseNumber = () => {
+  commentNumber.innerHTML = String(parseInt(commentNumber.innerHTML, 10) + 1);
+};
+
+const addComment = (comment: string): void => {
+  const li = document.createElement("li") as HTMLLIElement;
+  const span = document.createElement("span") as HTMLSpanElement;
+  span.innerHTML = comment;
+  li.appendChild(span);
+  commentList.prepend(li);
+  increaseNumber();
+};
 
 const sendComment = async (comment: string): Promise<void> => {
   const videoId = window.location.href.split("/videos/")[1];
@@ -13,7 +32,9 @@ const sendComment = async (comment: string): Promise<void> => {
     method: "POST",
     url: `/api/${videoId}/comment`
   });
-  console.log(response);
+  if (response.status === 200) {
+    addComment(comment);
+  }
 };
 
 const handleSubmit = (event: Event): void => {
