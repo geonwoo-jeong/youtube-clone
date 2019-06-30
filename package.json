@@ -87,7 +87,7 @@
     "webpack-cli": "^3.3.2"
   },
   "scripts": {
-    "copyAll": "cp -R 'src/static' 'build' && cp -R 'src/Views' 'build'",
+    "copyAll": "cp -R 'static' 'build' && cp -R 'src/Views' 'build'",
     "dev:server": "nodemon --exec cross-env NODE_ENV=development node --inspect=5858 -r ts-node/register ./src/init.ts --ignore '.scss', --ignore 'static'",
     "dev:assets": "cross-env WEBPACK_ENV=development TS_NODE_PROJECT=\"./tsconfig-for-webpack-config.json\" webpack -w",
     "build:server": "babel src --out-dir build --ignore \"src/Assets\" --extensions \".ts,.tsx\"",
