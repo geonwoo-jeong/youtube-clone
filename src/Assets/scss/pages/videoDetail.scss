@@ -46,15 +46,56 @@
       }
     }
     .video__comments-list {
-      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
       li {
-        background-color: #3498db;
-        color: white;
-        padding: 15px;
-        border-radius: 20px;
-        border-bottom-left-radius: 0px;
+        width: 500px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
         &:not(:last-child) {
           margin-bottom: 15px;
+        }
+        span {
+          margin-right: 20px;
+          .comment__avatar {
+            background-color: peru;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+          }
+        }
+        .comment__text {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: left;
+          min-height: 40px;
+          background-color: #3498db;
+          color: white;
+          padding-left: 15px;
+          border-radius: 20px;
+          border-bottom-left-radius: 0px;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+          word-break: break-all;
+          height: 100%;
+        }
+        .comment__icon {
+          cursor: pointer;
+          position: relative;
+          display: flex;
+          float: left;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+          left: -20px;
+          width: 60px;
+          height: 40px;
+          background-color: #3498db;
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
         }
       }
     }

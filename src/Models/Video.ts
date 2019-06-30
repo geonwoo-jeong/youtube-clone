@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import { IComment } from "./Comment";
 import { IUser } from "./User";
 
 export interface IVideo extends mongoose.Document {
-  comments: Comment[];
+  comments: IComment[];
   fileUrl: string;
   title: string;
   description: string;
@@ -48,6 +49,6 @@ const VideoSchema: mongoose.Schema<IVideo> = new mongoose.Schema({
   }
 });
 
-const model = mongoose.model<IVideo>("Video", VideoSchema);
+const model = mongoose.model<IVideo & mongoose.Document>("Video", VideoSchema);
 
 export default model;

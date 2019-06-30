@@ -41,6 +41,7 @@ const LINE_CALLBACK: string = "/auth/line/callback";
 const API: string = "/api";
 const REGISTER_VIEW: string = "/:id/view";
 const ADD_COMMENT: string = "/:id/comment";
+const REMOVE_COMMENT: string = "/:videoId/comments/:commentId/delete";
 
 const userDetail = (id?: string): string => {
   if (id) {
@@ -58,7 +59,7 @@ const videoDetail = (id?: string): string => {
   }
 };
 
-const editVideo = (id?: string) : string => {
+const editVideo = (id?: string): string => {
   if (id) {
     return `/videos/${id}/edit`;
   } else {
@@ -66,7 +67,7 @@ const editVideo = (id?: string) : string => {
   }
 };
 
-const deleteVideo = (id?: string) : string => {
+const deleteVideo = (id?: string): string => {
   if (id) {
     return `/videos/${id}/delete`;
   } else {
@@ -94,6 +95,7 @@ const routes = {
   login: LOGIN,
   logout: LOGOUT,
   registerView: REGISTER_VIEW,
+  removeComment: REMOVE_COMMENT,
   search: SEARCH,
   upload: UPLOAD,
   uploads: UPLOADS,

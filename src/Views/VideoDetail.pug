@@ -33,4 +33,8 @@ block content
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
                     li
-                        span=comment.text
+                        span
+                            img.comment__avatar(src=comment.creator.avatarUrl)
+                        span.comment__text=comment.text
+                        span.comment__icon(data-id=comment._id)
+                            i.fas.fa-times
