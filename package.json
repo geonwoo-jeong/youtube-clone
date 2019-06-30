@@ -93,7 +93,7 @@
     "build:server": "babel src --out-dir build --ignore \"src/Assets\" --extensions \".ts,.tsx\"",
     "build:assets": "cd src && WEBPACK_ENV=production webpack",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "start": "node build/init.js",
+    "start": "NODE_ENV=production node build/init.js",
     "prestart": "npm run build",
     "tunnel": "lt --port 4000"
   },
