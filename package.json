@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
@@ -36,7 +37,10 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/autoprefixer": "^9.5.0",
     "@types/aws-sdk": "^2.7.0",
     "@types/axios": "^0.14.0",
@@ -68,6 +72,7 @@
     "css-loader": "^2.1.1",
     "localtunnel": "^1.9.1",
     "mini-css-extract-plugin": "^0.6.0",
+    "ncp": "^2.0.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.18.11",
     "postcss-loader": "^3.0.0",
@@ -82,10 +87,14 @@
     "webpack-cli": "^3.3.2"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development node --inspect=5858 -r ts-node/register ./src/init.ts",
-    "start:watch": "nodemon",
-    "build:dev": "cross-env WEBPACK_ENV=development TS_NODE_PROJECT=\"./tsconfig-for-webpack-config.json\" webpack -w",
-    "build": "tsc",
+    "copyAll": "cp -R src/static build && cp -R src/Views build",
+    "dev:server": "nodemon --exec cross-env NODE_ENV=development node --inspect=5858 -r ts-node/register ./src/init.ts --ignore '.scss', --ignore 'static'",
+    "dev:assets": "cross-env WEBPACK_ENV=development TS_NODE_PROJECT=\"./tsconfig-for-webpack-config.json\" webpack -w",
+    "build:server": "babel src --out-dir build --ignore \"src/Assets\" --extensions \".ts,.tsx\"",
+    "build:assets": "cd src && cross-env WEBPACK_ENV=production webpack",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "start": "node build/init.js",
+    "prestart": "npm run build",
     "tunnel": "lt --port 4000"
   },
   "nodemonConfig": {
