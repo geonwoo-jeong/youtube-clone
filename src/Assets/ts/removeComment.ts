@@ -40,7 +40,7 @@ const handleClick = (event: any) => {
     }
   } = event;
   if (tagName === "SPAN" && classList.contains("comment__icon")) {
-    const answer = confirm("Do you want to remove?");
+    const answer = confirm("Do you want to remove comment?");
     if (answer) {
       sendRemoveRequest(id, target);
     }
