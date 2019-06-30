@@ -14,11 +14,30 @@ const increaseNumber = () => {
   commentNumber.innerHTML = String(parseInt(commentNumber.innerHTML, 10) + 1);
 };
 
-const addComment = (comment: string): void => {
+const addComment = (comment: string, data: any): void => {
+  const { avatarUrl, id } = data;
   const li = document.createElement("li") as HTMLLIElement;
-  const span = document.createElement("span") as HTMLSpanElement;
-  span.innerHTML = comment;
-  li.appendChild(span);
+  const avatarSpan = document.createElement("span") as HTMLSpanElement;
+  const commentSpan = document.createElement("span") as HTMLSpanElement;
+  const iconSpan = document.createElement("span") as HTMLSpanElement;
+  const avatarImg = document.createElement("img") as HTMLImageElement;
+  const icon = document.createElement("I") as HTMLElement;
+
+  icon.classList.add("fas");
+  icon.classList.add("fa-times");
+  avatarImg.classList.add("comment__avatar");
+  commentSpan.classList.add("comment__text");
+  iconSpan.classList.add("comment__icon");
+
+  commentSpan.innerHTML = comment;
+  iconSpan.dataset.id = id;
+  avatarImg.src = avatarUrl;
+
+  iconSpan.appendChild(icon);
+  avatarSpan.appendChild(avatarImg);
+  li.appendChild(avatarSpan);
+  li.appendChild(commentSpan);
+  li.appendChild(iconSpan);
   commentList.prepend(li);
   increaseNumber();
 };
@@ -33,7 +52,7 @@ const sendComment = async (comment: string): Promise<void> => {
     url: `/api/${videoId}/comment`
   });
   if (response.status === 200) {
-    addComment(comment);
+    addComment(comment, response.data);
   }
 };
 

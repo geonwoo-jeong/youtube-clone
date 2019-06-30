@@ -28,13 +28,18 @@ block content
                 span.video__comment-number
                     span#jsCommentNumber=video.comments.length
                     |  comments
-            form.add__comment#jsAddComment
-                input(type="text", placeholder="Add a comment", name="comment")
+            if loggedUser
+                form.add__comment#jsAddComment
+                    input(type="text", placeholder="Add a comment", name="comment")
             ul.video__comments-list#jsCommentList
-                each comment in video.comments.reverse()
-                    li
-                        span
-                            img.comment__avatar(src=comment.creator.avatarUrl)
-                        span.comment__text=comment.text
-                        span.comment__icon(data-id=comment._id)
-                            i.fas.fa-times
+                if video.comments
+                    each comment in video.comments.reverse()
+                        li
+                            span
+                                img.comment__avatar(src=comment.creator.avatarUrl)
+                            span.comment__text=comment.text
+                            if loggedUser && (comment.creator.id === loggedUser.id)
+                                span.comment__icon(data-id=comment._id)
+                                    i.fas.fa-times
+                            else
+                                span.comment__icon

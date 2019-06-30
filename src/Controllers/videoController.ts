@@ -72,9 +72,6 @@ export const videoDetail = async (
         path: "creator"
       }
     });
-    if (video) {
-      console.log(video.comments[0]._id);
-    }
 
     res.render("VideoDetail", { pageTitle: "Video Detail", video });
   } catch (error) {
@@ -194,11 +191,14 @@ export const postAddComment = async (
         text: comment
       });
       video.comments.push(newComment.id);
-      video.save();
+      const result = await video.save();
+
+      return res
+        .send({ id: result.comments.pop(), avatarUrl: user.avatarUrl })
+        .end();
     }
   } catch (error) {
     res.status(400);
-  } finally {
     res.end();
   }
 };
