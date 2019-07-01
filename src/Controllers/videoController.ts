@@ -11,7 +11,7 @@ export const home = async (
     const videos = await Video.find({}).sort({ _id: -1 });
     res.render("Home", { pageTitle: "Home", videos });
   } catch (error) {
-    console.log(error);
+    req.flash("error", "Can't loading page");
     res.render("Home", { pageTitle: "Home", videos: [] });
   }
 };
@@ -26,7 +26,7 @@ export const search = async (
   try {
     videos = await Video.find({ title: { $regex: term, $options: "i" } });
   } catch (error) {
-    console.log(error);
+    req.flash("error", "Can't search");
   }
   res.render("Search", { pageTitle: "Search", term, videos });
 };
@@ -54,6 +54,7 @@ export const postUpload = async (
   });
   req.user.videos.push(newVideo.id);
   req.user.save();
+  req.flash("success", "Video Uploaded");
   res.redirect(routes.videoDetail(newVideo.id));
 };
 
@@ -75,6 +76,7 @@ export const videoDetail = async (
 
     res.render("VideoDetail", { pageTitle: "Video Detail", video });
   } catch (error) {
+    req.flash("error", "Can't loading video");
     res.redirect(routes.home);
   }
 };
@@ -93,6 +95,7 @@ export const getEditVideo = async (
     }
     res.render("EditVideo", { pageTitle: `Edit ${video.title}`, video });
   } catch (error) {
+    req.flash("error", "Can't open Video edit page");
     res.redirect(routes.home);
   }
 };
@@ -107,8 +110,10 @@ export const postEditVideo = async (
       body: { title, description }
     } = req;
     await Video.findOneAndUpdate({ _id: id }, { title, description });
+    req.flash("success", "Video Edited");
     res.redirect(routes.videoDetail(id));
   } catch (error) {
+    req.flash("error", "Can't edit Video");
     res.redirect(routes.home);
   }
 };
@@ -129,8 +134,9 @@ export const deleteVideo = async (
 
     await Video.findOneAndDelete({ _id: id });
   } catch (error) {
-    console.log(error);
+    req.flash("error", "Can't delete Video");
   }
+  req.flash("success", "Video deleted");
   res.redirect(routes.home);
 };
 
@@ -192,7 +198,6 @@ export const postAddComment = async (
       });
       video.comments.push(newComment.id);
       const result = await video.save();
-
       return res
         .send({ id: result.comments.pop(), avatarUrl: user.avatarUrl })
         .end();

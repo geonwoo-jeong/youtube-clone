@@ -786,6 +786,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/connect-flash@*":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/connect-flash/-/connect-flash-0.0.34.tgz#ec7323d1636bc8d9b7c02c3a0a5d337602b671f9"
+  integrity sha512-QC93TwnTZ0sk//bfT81o7U4GOedbOZAcgvqi0v1vJqCESC8tqIVnhzB1CHiAUBUWFjoxG5JQF0TYaNa6DMb6Ig==
+  dependencies:
+    "@types/express" "*"
+
 "@types/connect-mongo@^0.0.42":
   version "0.0.42"
   resolved "https://registry.yarnpkg.com/@types/connect-mongo/-/connect-mongo-0.0.42.tgz#4c833455ae20d38691e085199bdde9dfbadf18d7"
@@ -828,6 +835,14 @@
   integrity sha512-ftQl3DtBvqHl9L16tpqqzA4YzCSXZfi7g8cQceTz5rOlYtk/IZbFjAv3mLOQlNIgOaylCQWQoBdDQHPgEBJPHg==
   dependencies:
     "@types/node" "*"
+
+"@types/express-flash@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@types/express-flash/-/express-flash-0.0.0.tgz#758f0dff051f58001c31f41815c435ed0ae90ec0"
+  integrity sha512-zs1xXRIZOjghUBriJPSnhPmfDpqf/EQxT21ggi/9XZ9/RHYrUi+5vK2jnQrP2pD1abbuZvm7owLICiNCLBQzEQ==
+  dependencies:
+    "@types/connect-flash" "*"
+    "@types/express" "*"
 
 "@types/express-serve-static-core@*":
   version "4.16.2"
@@ -2117,6 +2132,11 @@ configstore@^3.0.0:
     write-file-atomic "^2.0.0"
     xdg-basedir "^3.0.0"
 
+connect-flash@0.1.x:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/connect-flash/-/connect-flash-0.1.1.tgz#d8630f26d95a7f851f9956b1e8cc6732f3b6aa30"
+  integrity sha1-2GMPJtlaf4UfmVax6MxnMvO2qjA=
+
 connect-mongo@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/connect-mongo/-/connect-mongo-2.0.3.tgz#db6cabe1e3add5acc9ef9c486681027675a58ee5"
@@ -2844,6 +2864,13 @@ expect-ct@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/expect-ct/-/expect-ct-0.1.1.tgz#de84476a2dbcb85000d5903737e9bc8a5ba7b897"
   integrity sha512-ngXzTfoRGG7fYens3/RMb6yYoVLvLMfmsSllP/mZPxNHgFq41TmPSLF/nLY7fwoclI2vElvAmILFWGUYqdjfCg==
+
+express-flash@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/express-flash/-/express-flash-0.0.2.tgz#23d1a8bcf3f90d707928e489f96869ecad0acda2"
+  integrity sha1-I9GovPP5DXB5KOSJ+Whp7K0KzaI=
+  dependencies:
+    connect-flash "0.1.x"
 
 express-session@^1.16.1:
   version "1.16.1"

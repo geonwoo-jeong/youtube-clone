@@ -17,6 +17,7 @@ export const postJoin = async (
   } = req;
 
   if (password !== password2) {
+    req.flash("error", "Passwords don't match");
     res.status(status.BAD_REQUEST);
     return res.render("Join", { pageTitle: "Join" });
   }
@@ -27,9 +28,10 @@ export const postJoin = async (
       name
     });
     await User.register(user, password);
+    req.flash("success", "Welcome");
     next();
   } catch (error) {
-    console.log(error);
+    req.flash("error", "Can't join");
     res.redirect(routes.home);
   }
 };
@@ -43,6 +45,7 @@ export const logout = async (
   req: Express.Request,
   res: Express.Response
 ): Promise<void> => {
+  req.flash("info", "Logged out, see you later");
   await req.logout();
   res.redirect(routes.home);
 };
@@ -65,6 +68,7 @@ export const userDetail = async (
       const user = await User.findById(id).populate("videos");
       res.render("UserDetail", { pageTitle: "User Detail", user });
     } catch (error) {
+      req.flash("error", "User not found");
       res.redirect(routes.home);
     }
   }
@@ -90,8 +94,10 @@ export const postEditProfile = async (
       email,
       name
     });
+    req.flash("success", "Profile updated");
     res.redirect(routes.userDetail(req.user.id));
   } catch (error) {
+    req.flash("error", "Can't update profile");
     res.redirect(routes.editProfile);
   }
 };
@@ -111,13 +117,16 @@ export const postChangePassword = async (
   } = req;
   try {
     if (newPassword !== newPassword1) {
+      req.flash("error", "Password doesn't match");
       res.status(status.BAD_REQUEST);
       res.redirect(routes.users + routes.changePassword);
       return;
     }
     await req.user.changePassword(oldPassword, newPassword);
+    req.flash("success", "Password changed");
     res.redirect(routes.userDetail(req.user.id));
   } catch (error) {
+    req.flash("error", "Can't change password");
     res.status(status.BAD_REQUEST);
     res.redirect(routes.users + routes.changePassword);
   }

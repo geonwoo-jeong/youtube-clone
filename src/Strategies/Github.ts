@@ -60,7 +60,9 @@ const { callbackURL, clientID, clientSecret } = checkUndefined(
 );
 
 const authenticateOptions: passport.AuthenticateOptions = {
+  failureFlash: "Can't log in",
   failureRedirect: routes.login,
+  successFlash: "Welcome",
   successRedirect: routes.home
 };
 

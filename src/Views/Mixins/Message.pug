@@ -1,0 +1,4 @@
+mixin Message(message = {})
+    if Object.keys(message).length
+        div.flash-message__container(class=Object.keys(message))
+            span.flash-message__text=Object.values(message)

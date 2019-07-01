@@ -5,6 +5,7 @@ import express from "express";
 import mongoose from "mongoose";
 import ConnectMongo from "connect-mongo";
 import expressSession from "express-session";
+import flash from "express-flash";
 import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
@@ -36,18 +37,22 @@ const expressSessionOptions: expressSession.SessionOptions = {
 };
 
 const app: express.Application = express();
+const isProduction = process.env.NODE_ENV === "production" ? true : false;
 
 app.use(cors());
 app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "Views"));
-app.use("/uploads", express.static("uploads"));
-app.use("/static", express.static(path.join(__dirname, "static")));
+isProduction
+  ? app.use("/static", express.static(path.join(__dirname, "static")))
+  : app.use("/static", express.static("static"));
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(expressSession(expressSessionOptions));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(localMiddlewares);
