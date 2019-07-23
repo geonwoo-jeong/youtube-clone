@@ -4,6 +4,15 @@ const commentList = document.getElementById(
   "jsCommentList"
 ) as HTMLUListElement;
 
+const reduceCount = (): void => {
+  const numberSpan = document.getElementById(
+    "jsCommentNumber"
+  ) as HTMLSpanElement;
+  const currentNumber = +numberSpan.innerHTML;
+
+  numberSpan.innerHTML = String(currentNumber - 1);
+};
+
 const removeComment = (target: HTMLElement): void => {
   const { parentElement } = target;
   if (parentElement) {
@@ -25,6 +34,7 @@ const sendRemoveRequest = async (
   });
   if (response.status === 200) {
     removeComment(target);
+    reduceCount();
   } else {
     console.log("something wrong");
   }
@@ -34,12 +44,21 @@ const handleClick = (event: any) => {
   const {
     target,
     target: {
+      parentNode,
+      parentNode: {
+        dataset: { id: commentId }
+      },
       classList,
       tagName,
       dataset: { id }
     }
   } = event;
-  if (tagName === "SPAN" && classList.contains("comment__icon")) {
+  if (tagName === "I" && classList.contains("fa-times")) {
+    const answer = confirm("Do you want to remove comment?");
+    if (answer) {
+      sendRemoveRequest(commentId, parentNode);
+    }
+  } else if (tagName === "SPAN" && classList.contains("comment__icon")) {
     const answer = confirm("Do you want to remove comment?");
     if (answer) {
       sendRemoveRequest(id, target);
