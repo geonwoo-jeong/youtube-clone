@@ -5,9 +5,9 @@ import routes from "../routes";
 import { checkUndefined } from "../Utils/checkUndefined";
 
 const { callbackURL, clientID, clientSecret } = checkUndefined(
-  process.env.PASSPORT_GITHUB_CALLBACK_URL,
-  process.env.PASSPORT_GITHUB_CLIENT,
-  process.env.PASSPORT_GITHUB_SECRET,
+  process.env.PASSPORT_FACEBOOK_CALLBACK_URL,
+  process.env.PASSPORT_FACEBOOK_APP_ID,
+  process.env.PASSPORT_FACEBOOK_APP_SECRET,
   "FACEBOOK"
 );
 
