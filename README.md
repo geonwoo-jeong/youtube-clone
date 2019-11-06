@@ -17,4 +17,6 @@ Cloning Youtube with Vanilla and NodeJS & TypeScript
 
 ## Link
 
+The connection may be delayed for about 1 minute.
+
 https://peaceful-mesa-92903.herokuapp.com/
