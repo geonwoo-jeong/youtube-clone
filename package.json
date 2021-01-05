@@ -15,7 +15,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.4.5",
     "aws-sdk": "^2.478.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.3",
